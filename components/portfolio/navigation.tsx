@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
@@ -32,6 +33,7 @@ export function Navigation() {
     { href: "#experience", label: t.nav.experience },
     { href: "#education",  label: t.nav.education },
     { href: "#contact",    label: t.nav.contact },
+    { href: "/extras",     label: t.nav.extras },
   ];
 
   const LocaleSwitcher = () => (
@@ -60,7 +62,9 @@ export function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <Logo />
+        <Link href="/">
+          <Logo />
+        </Link>
 
         {/* Desktop links */}
         <div className="hidden items-center gap-8 md:flex">
