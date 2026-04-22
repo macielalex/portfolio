@@ -12,6 +12,7 @@ const translations = {
       stack: "Stack",
       education: "Formação",
       contact: "Contato",
+      extras: "Extras",
     },
     hero: {
       badge: "Disponível para Projetos",
@@ -60,6 +61,19 @@ const translations = {
           description:
             "SaaS de cobranças recorrentes para administradores informais. React + Node + Asaas + WhatsApp API. Em MVP.",
         },
+      },
+      dynamicAppIcon: {
+        title: "dynamic_app_icon",
+        badge: "Open Source",
+        description:
+          "Desenvolvimento de solução nativa para alteração programática de ícones em tempo de execução. Criado para viabilizar branding dinâmico em ecossistemas Whitelabel, superando limitações sistêmicas do Android e iOS.",
+        deepDiveLabel: "Profundidade técnica",
+        android: "Android: activity-alias & PackageManager",
+        ios: "iOS: alternateIcons API",
+        bridge: "Bridge: Flutter Method Channels (Kotlin/Swift)",
+        githubLabel: "Ver no GitHub",
+        githubAriaLabel:
+          "Repositório dynamic_app_icon no GitHub, link externo abre em nova aba",
       },
     },
     stack: {
@@ -158,6 +172,7 @@ const translations = {
       stack: "Stack",
       education: "Education",
       contact: "Contact",
+      extras: "Extras",
     },
     hero: {
       badge: "Available for Projects",
@@ -206,6 +221,19 @@ const translations = {
           description:
             "Recurring billing SaaS for informal administrators. React + Node + Asaas + WhatsApp API. In MVP.",
         },
+      },
+      dynamicAppIcon: {
+        title: "dynamic_app_icon",
+        badge: "Open Source",
+        description:
+          "Native solution for programmatic app icon changes at runtime. Built to enable dynamic branding in Whitelabel ecosystems, working around platform constraints on Android and iOS.",
+        deepDiveLabel: "Technical deep dive",
+        android: "Android: activity-alias & PackageManager",
+        ios: "iOS: alternateIcons API",
+        bridge: "Bridge: Flutter Method Channels (Kotlin/Swift)",
+        githubLabel: "View on GitHub",
+        githubAriaLabel:
+          "dynamic_app_icon repository on GitHub, external link opens in a new tab",
       },
     },
     stack: {
