@@ -1,28 +1,30 @@
-"use client";
+import type { Metadata } from "next";
+import { HomePage } from "@/components/portfolio/home-page";
+import { siteConfig } from "@/lib/site";
 
-import { I18nProvider } from "@/lib/i18n";
-import { Navigation } from "@/components/portfolio/navigation";
-import { Hero } from "@/components/portfolio/hero";
-import { BentoGrid } from "@/components/portfolio/bento-grid";
-import { TechStack } from "@/components/portfolio/tech-stack";
-import { Experience } from "@/components/portfolio/experience";
-import { Education } from "@/components/portfolio/education";
-import { Contact } from "@/components/portfolio/contact";
-import { Footer } from "@/components/portfolio/footer";
+export const metadata: Metadata = {
+  title: siteConfig.title,
+  description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: "/",
+    siteName: siteConfig.name,
+    locale: siteConfig.locale,
+    type: "website",
+    images: [{ url: "/logo.svg" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: ["/logo.svg"],
+  },
+};
 
 export default function Portfolio() {
-  return (
-    <I18nProvider>
-      <main className="relative min-h-screen overflow-hidden bg-background">
-        <Navigation />
-        <Hero />
-        <BentoGrid />
-        <TechStack />
-        <Experience />
-        <Education />
-        <Contact />
-        <Footer />
-      </main>
-    </I18nProvider>
-  );
+  return <HomePage />;
 }

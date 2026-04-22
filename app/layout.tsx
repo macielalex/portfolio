@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { getSiteUrl, siteConfig } from '@/lib/site'
 import './globals.css'
 
 const plusJakarta = Plus_Jakarta_Sans({ 
@@ -14,8 +15,27 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Alex Maciel | Senior Mobile Engineer',
-  description: 'High-Scale Mobile Engineering - 5+ years of Flutter expertise, Whitelabel platforms, and Clean Architecture',
+  metadataBase: getSiteUrl(),
+  title: siteConfig.title,
+  description: siteConfig.description,
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: siteConfig.title,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    locale: siteConfig.locale,
+    type: 'website',
+    url: '/',
+    images: [{ url: '/logo.svg' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: ['/logo.svg'],
+  },
   icons: {
     icon: [
       {
@@ -34,6 +54,19 @@ export default function RootLayout({
   return (
     <html lang="pt" className="dark">
       <body className={`${plusJakarta.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Alex Maciel',
+              url: siteConfig.url,
+              jobTitle: 'Senior Mobile Engineer',
+              sameAs: [siteConfig.social.github, siteConfig.social.linkedin],
+            }),
+          }}
+        />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

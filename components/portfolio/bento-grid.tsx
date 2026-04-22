@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useI18n } from "@/lib/i18n";
+import { DynamicIconCard } from "@/components/portfolio/DynamicIconCard";
 import { useCounter } from "@/hooks/use-counter";
 import { cn } from "@/lib/utils";
 import { Briefcase, Shield, Rocket, Smartphone, BarChart3 } from "lucide-react";
@@ -358,8 +359,11 @@ export function BentoGrid() {
             </p>
           </BentoCard>
 
+          {/* Open Source — dynamic_app_icon */}
+          <DynamicIconCard className="md:col-span-3" delay={0.45} />
+
           {/* Card 5 - Own Products (wide) */}
-          <BentoCard className="md:col-span-3" delay={0.5}>
+          <BentoCard className="md:col-span-3" delay={0.55}>
             <div className="mb-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
