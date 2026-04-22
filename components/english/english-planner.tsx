@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { EnglishTab, geminiPrompts, phases } from "@/lib/english-plan-data";
+import { SecondaryNavigation } from "@/components/portfolio/secondary-navigation";
 import { useLocalStorage } from "./use-local-storage";
 
 type LocalMap = Record<string, boolean>;
@@ -56,7 +57,8 @@ export function EnglishPlanner() {
   }, [activeTab, targetEvalIndex, activePhase]);
 
   return (
-    <main className="min-h-screen bg-background px-4 pb-10 pt-8 text-foreground">
+    <main className="min-h-screen bg-background px-4 pb-10 pt-24 text-foreground">
+      <SecondaryNavigation />
       <div className="mx-auto max-w-5xl">
         <Card className="mb-6 border-border bg-card">
           <CardHeader className="pb-1">
@@ -90,14 +92,16 @@ export function EnglishPlanner() {
         </section>
 
         <section className="mb-6 grid grid-cols-4 border-b border-border">
-          {(["plano", "recursos", "avaliacao", "gemini"] as const).map((tab) => (
+          {(["plano", "recursos", "avaliação", "gemini"] as const).map((tab) => (
             <button
               key={tab}
-              onClick={() => setActiveTab(tab)}
+              onClick={() => setActiveTab(tab === "avaliação" ? "avaliacao" : tab)}
               className="border-b-2 py-2 font-mono text-xs uppercase tracking-wide transition-colors"
               style={{
-                borderBottomColor: activeTab === tab ? phase.color : "transparent",
-                color: activeTab === tab ? phase.color : "var(--color-muted-foreground)",
+                borderBottomColor:
+                  activeTab === (tab === "avaliação" ? "avaliacao" : tab) ? phase.color : "transparent",
+                color:
+                  activeTab === (tab === "avaliação" ? "avaliacao" : tab) ? phase.color : "var(--color-muted-foreground)",
               }}
             >
               {tab}
@@ -163,7 +167,7 @@ export function EnglishPlanner() {
                                 }}
                                 className="w-full rounded-md border border-amber-500/30 bg-amber-500/10 p-2 text-left text-xs text-amber-300 transition-colors hover:bg-amber-500/20"
                               >
-                                Ir para detalhes desta avaliacao na aba avaliacao.
+                                Ir para detalhes desta avaliação na aba avaliação.
                               </button>
                             ) : (
                               <>
@@ -231,7 +235,7 @@ export function EnglishPlanner() {
                       PASSA SE: {evaluation.pass}
                     </p>
                     <p className="rounded-md border border-rose-500/30 bg-rose-500/10 p-2 text-xs">
-                      NAO PASSOU: {evaluation.fail}
+                      NÃO PASSOU: {evaluation.fail}
                     </p>
                   </CardContent>
                 </Card>
@@ -268,7 +272,7 @@ export function EnglishPlanner() {
 function EmptyPhaseState() {
   return (
     <Card>
-      <CardContent className="pt-6 text-sm text-muted-foreground">Conteudo desta fase sera preenchido na proxima etapa.</CardContent>
+      <CardContent className="pt-6 text-sm text-muted-foreground">Conteúdo desta fase será preenchido na próxima etapa.</CardContent>
     </Card>
   );
 }

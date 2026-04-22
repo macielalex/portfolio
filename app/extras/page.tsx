@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { SecondaryNavigation } from "@/components/portfolio/secondary-navigation";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -29,7 +30,8 @@ const embeddedProjects = [
 
 export default function ExtrasPage() {
   return (
-    <main className="min-h-screen bg-background px-4 py-10 text-foreground">
+    <main className="min-h-screen bg-background px-4 py-24 text-foreground">
+      <SecondaryNavigation />
       <div className="mx-auto max-w-5xl space-y-6">
         <header className="space-y-2">
           <p className="font-mono text-xs tracking-widest text-muted-foreground">EXTRAS</p>
