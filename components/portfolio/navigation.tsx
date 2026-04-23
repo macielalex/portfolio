@@ -32,7 +32,6 @@ export function Navigation() {
     { href: "#experience", label: t.nav.experience },
     { href: "#education",  label: t.nav.education },
     { href: "#contact",    label: t.nav.contact },
-    { href: "/extras",     label: t.nav.extras },
   ];
 
   const LocaleSwitcher = () => (
