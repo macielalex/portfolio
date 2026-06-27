@@ -1,53 +1,38 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Apple, Cable, Github, Smartphone, Sparkles } from "lucide-react";
+import { ExternalLink, Github, Smartphone, WifiOff, Zap } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 
-const GITHUB_URL = "https://github.com/macielalex/dynamic_app_icon";
+const GITHUB_URL = "https://github.com/macielalex/scoreboard";
+const LIVE_URL = "https://euphonious-meringue-41868f.netlify.app/";
 
-const METHOD_CHANNEL_SNIPPET = `// Flutter ↔ Native (Kotlin / Swift)
-class DynamicAppIcon {
-  static const MethodChannel _channel =
-      MethodChannel('dynamic_app_icon');
+const GESTURE_SNIPPET = `// Toque +1, arrastar ↓ −1
+panel.addEventListener('pointerdown', onPressStart);
+panel.addEventListener('pointerup', onPressEnd);
 
-  static Future<void> setAlternateIcon(String name) async {
-    await _channel.invokeMethod<void>('setAlternateIcon', {
-      'name': name,
-    });
-  }
+function addPoint(team) {
+  state[team]++;
+  saveToLocalStorage(state);
+  checkMatchEnd();
 }`;
 
-export type DynamicIconCardLabels = {
-  title: string;
-  badge: string;
-  description: string;
-  deepDiveLabel: string;
-  android: string;
-  ios: string;
-  bridge: string;
-  githubLabel: string;
-  githubAriaLabel: string;
-};
-
-export type DynamicIconCardProps = {
+export function ScoreboardCard({
+  delay = 0,
+  className,
+}: {
   delay?: number;
   className?: string;
-  labels?: Partial<DynamicIconCardLabels>;
-};
-
-export function DynamicIconCard({ delay = 0, className, labels }: DynamicIconCardProps) {
+}) {
   const { t } = useI18n();
-  const base = t.projects.dynamicAppIcon;
-  const copy: DynamicIconCardLabels = { ...base, ...labels };
-
-  const titleId = "dynamic-app-icon-card-title";
+  const copy = t.projects.scoreboard;
+  const titleId = "scoreboard-card-title";
 
   return (
     <motion.article
-      id="dynamic-app-icon"
+      id="scoreboard"
       aria-labelledby={titleId}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -64,10 +49,8 @@ export function DynamicIconCard({ delay = 0, className, labels }: DynamicIconCar
         className="pointer-events-none absolute inset-0 select-none overflow-hidden"
         aria-hidden
       >
-        <pre
-          className="absolute -right-4 top-1/2 max-h-[min(100%,220px)] w-[min(100%,420px)] -translate-y-1/2 overflow-hidden p-4 font-mono text-[10px] leading-relaxed text-primary opacity-[0.06] sm:text-[11px] md:opacity-[0.08]"
-        >
-          <code>{METHOD_CHANNEL_SNIPPET}</code>
+        <pre className="absolute -right-4 top-1/2 max-h-[min(100%,220px)] w-[min(100%,420px)] -translate-y-1/2 overflow-hidden p-4 font-mono text-[10px] leading-relaxed text-primary opacity-[0.06] sm:text-[11px] md:opacity-[0.08]">
+          <code>{GESTURE_SNIPPET}</code>
         </pre>
       </div>
 
@@ -75,7 +58,7 @@ export function DynamicIconCard({ delay = 0, className, labels }: DynamicIconCar
         <header className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex items-start gap-3">
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-              <Sparkles className="h-4 w-4 text-primary" aria-hidden />
+              <Zap className="h-4 w-4 text-primary" aria-hidden />
             </div>
             <div className="min-w-0 space-y-1">
               <div className="flex flex-wrap items-center gap-2">
@@ -96,17 +79,14 @@ export function DynamicIconCard({ delay = 0, className, labels }: DynamicIconCar
 
         <div>
           <p className="mb-2 text-sm text-muted-foreground">{copy.deepDiveLabel}</p>
-          <ul
-            className="flex flex-wrap gap-2"
-            aria-label={copy.deepDiveLabel}
-          >
+          <ul className="flex flex-wrap gap-2" aria-label={copy.deepDiveLabel}>
             <li>
               <Badge
                 variant="outline"
                 className="gap-1.5 border-border bg-secondary/40 py-1 pl-2 pr-2.5 text-xs font-normal text-foreground"
               >
                 <Smartphone className="size-3.5 shrink-0 text-primary" aria-hidden />
-                <span>{copy.android}</span>
+                <span>{copy.pwa}</span>
               </Badge>
             </li>
             <li>
@@ -114,8 +94,8 @@ export function DynamicIconCard({ delay = 0, className, labels }: DynamicIconCar
                 variant="outline"
                 className="gap-1.5 border-border bg-secondary/40 py-1 pl-2 pr-2.5 text-xs font-normal text-foreground"
               >
-                <Apple className="size-3.5 shrink-0 text-primary" aria-hidden />
-                <span>{copy.ios}</span>
+                <WifiOff className="size-3.5 shrink-0 text-primary" aria-hidden />
+                <span>{copy.offline}</span>
               </Badge>
             </li>
             <li>
@@ -123,14 +103,28 @@ export function DynamicIconCard({ delay = 0, className, labels }: DynamicIconCar
                 variant="outline"
                 className="gap-1.5 border-border bg-secondary/40 py-1 pl-2 pr-2.5 text-xs font-normal text-foreground"
               >
-                <Cable className="size-3.5 shrink-0 text-primary" aria-hidden />
-                <span>{copy.bridge}</span>
+                <span>{copy.stack}</span>
               </Badge>
             </li>
           </ul>
         </div>
 
-        <div className="pt-1">
+        <div className="flex flex-wrap gap-2 pt-1">
+          <a
+            href={LIVE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={copy.liveAriaLabel}
+            className={cn(
+              "inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-secondary/30 px-4 py-2.5 text-sm font-medium text-foreground transition-colors",
+              "hover:border-primary/35 hover:bg-secondary/50 hover:text-primary",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+              "sm:w-auto sm:justify-start"
+            )}
+          >
+            <ExternalLink className="size-4 shrink-0" aria-hidden />
+            <span>{copy.liveLabel}</span>
+          </a>
           <a
             href={GITHUB_URL}
             target="_blank"

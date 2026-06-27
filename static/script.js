@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroEntrance();
   initRevealOnScroll();
   initCounters();
+  initProjectTilt();
   initFaq();
   initContactForm();
 });
@@ -88,14 +89,10 @@ function initSidebar() {
    ============================================================ */
 function initHeroEntrance() {
   const elements = document.querySelectorAll('.hero-animate');
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  elements.forEach((el, index) => {
-    if (!prefersReduced) {
-      el.style.transitionDelay = `${index * 0.12}s`;
-    }
+  elements.forEach((el) => {
     requestAnimationFrame(() => {
-      el.classList.add('revealed');
+      el.classList.add('visible');
     });
   });
 }
@@ -110,7 +107,7 @@ function initRevealOnScroll() {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (prefersReduced) {
-    reveals.forEach((el) => el.classList.add('revealed'));
+    reveals.forEach((el) => el.classList.add('visible'));
     return;
   }
 
@@ -118,19 +115,19 @@ function initRevealOnScroll() {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
+          entry.target.classList.add('visible');
           observer.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    { threshold: 0.15 }
   );
 
   reveals.forEach((el) => observer.observe(el));
 }
 
 /* ============================================================
-   CONTADOR — animação numérica com Intersection Observer
+   CONTADOR — animação numérica com setInterval (16ms / 1500ms)
    ============================================================ */
 function initCounters() {
   const section = document.getElementById('numeros');
@@ -143,23 +140,24 @@ function initCounters() {
     const target = parseInt(el.dataset.target, 10);
     const prefix = el.dataset.prefix || '';
     const suffix = el.dataset.suffix || '';
-    const duration = 2000;
-    const startTime = performance.now();
+    const duration = 1500;
+    const interval = 16;
+    const totalSteps = Math.ceil(duration / interval);
+    let step = 0;
 
-    const step = (currentTime) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
+    const timer = setInterval(() => {
+      step += 1;
+      const progress = Math.min(step / totalSteps, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = Math.round(eased * target);
 
       el.textContent = `${prefix}${current}${suffix}`;
 
-      if (progress < 1) {
-        requestAnimationFrame(step);
+      if (progress >= 1) {
+        clearInterval(timer);
+        el.textContent = `${prefix}${target}${suffix}`;
       }
-    };
-
-    requestAnimationFrame(step);
+    }, interval);
   };
 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -183,10 +181,49 @@ function initCounters() {
         }
       });
     },
-    { threshold: 0.3 }
+    { threshold: 0.15 }
   );
 
   observer.observe(section);
+}
+
+/* ============================================================
+   TILT 3D — cards de projeto com rotação proporcional ao cursor
+   ============================================================ */
+function initProjectTilt() {
+  const cards = document.querySelectorAll('.project-card');
+  if (!cards.length) return;
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  if (prefersReduced || !hasFinePointer) return;
+
+  const maxTilt = 10;
+
+  cards.forEach((card) => {
+    card.addEventListener('mouseenter', () => {
+      card.classList.add('is-tilting');
+    });
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -maxTilt;
+      const rotateY = ((x - centerX) / centerX) * maxTilt;
+
+      card.style.transform =
+        `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.classList.remove('is-tilting');
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+    });
+  });
 }
 
 /* ============================================================

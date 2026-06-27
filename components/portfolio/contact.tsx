@@ -92,7 +92,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="group flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 font-medium text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-[0_0_30px_-5px_rgba(0,229,192,0.5)] disabled:opacity-50"
+                className="group flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 font-medium text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-[0_4px_24px_-4px_rgba(196,87,42,0.12)] disabled:opacity-50"
               >
                 {isSubmitting ? (
                   t.contact.form.sending
@@ -118,7 +118,7 @@ export function Contact() {
           >
             <a
               href={`mailto:${t.contact.info.email}`}
-              className="group flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:border-primary/30 hover:shadow-[0_0_30px_-5px_rgba(0,229,192,0.15)]"
+              className="group flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:border-primary/30 hover:shadow-[0_4px_24px_-4px_rgba(196,87,42,0.12)]"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
                 <Mail className="h-5 w-5 text-primary" />
@@ -133,7 +133,7 @@ export function Contact() {
               href="https://www.linkedin.com/in/alex-maciel-867b8933"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:border-primary/30 hover:shadow-[0_0_30px_-5px_rgba(0,229,192,0.15)]"
+              className="group flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:border-primary/30 hover:shadow-[0_4px_24px_-4px_rgba(196,87,42,0.12)]"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
                 <svg className="h-5 w-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
@@ -150,7 +150,7 @@ export function Contact() {
               href="https://github.com/macielalex"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:border-primary/30 hover:shadow-[0_0_30px_-5px_rgba(0,229,192,0.15)]"
+              className="group flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:border-primary/30 hover:shadow-[0_4px_24px_-4px_rgba(196,87,42,0.12)]"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
                 <svg className="h-5 w-5 text-primary" fill="currentColor" viewBox="0 0 24 24">

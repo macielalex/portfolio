@@ -15,122 +15,150 @@ const translations = {
       extras: "Extras",
     },
     hero: {
-      badge: "Disponível para Projetos",
-      title: "Engineering Scalable Apps with a Business Mindset",
+      availability:
+        "Aberto para freelas e CLT remoto — prefiro projeto com problema real a pitch bonito.",
+      title: "Dev mobile que veio do chão de fábrica",
       subtitle:
-        "Senior Flutter Developer com background em ERP e Administração Pública. Rigor técnico com visão estratégica de produto.",
-      cta: "Ver projetos",
+        "Passei anos implantando ERP e WMS antes de virar dev. Isso me fez programar diferente: eu pergunto o porquê da regra de negócio antes de abrir o editor.",
+      cta: "Ver o que ando fazendo",
+    },
+    voice: {
+      title: "O que eu penso sobre mobile em 2026",
+      body:
+        "Não gosto de side project que morre no Figma. O PhoneMidiaEasy surgiu porque um cliente precisava tocar mídia no carro sem internet — não porque eu queria ter um app na loja. Na Fiibo, aprendi que whitelabel não é só trocar cor: é não quebrar dez marcas quando você corrige um bug na undécima. E sim, ainda acho que Flutter faz sentido para produto sério — mas só se você mede o que acontece depois do deploy, não só se o build passou.",
     },
     projects: {
-      title: "Impacto Real",
+      title: "O que ando construindo",
       whitelabel: {
-        title: "The Whitelabel Architect",
+        title: "Um app, dez marcas",
         description:
-          "Liderança técnica na Fiibo — startup avaliada em R$77,5M, Top 1 Healthtech nos 100 Open Startups. Arquitetura Flutter whitelabel com 10+ marcas ativas (Fiibo, FIEC, XP, Doctorclin e outras). Clean Architecture, TDD, Shorebird OTA.",
+          "Na Fiibo, o mesmo Flutter roda como Fiibo, FIEC, XP, Doctorclin e outras. O trabalho pesado não é a tela bonita — é fazer deploy de uma marca nova sem derrubar as outras. Shorebird entra quando a correção não pode esperar a fila da loja.",
+        storeLinksLabel: "Ver na Play Store",
+        fiiboLabel: "Fiibo",
+        fiecLabel: "RH Benefícios FIEC",
+        fiiboAriaLabel:
+          "App Fiibo na Google Play Store, link externo abre em nova aba",
+        fiecAriaLabel:
+          "App RH Benefícios FIEC na Google Play Store, link externo abre em nova aba",
       },
       metrics: {
-        title: "Real Product Metrics",
-        subtitle: "Dados reais de um produto em produção — não um side project.",
-        lives: "vidas cobertas",
-        flavors: "flavors em produção",
-        retention: "taxa de retenção (28d)",
-        engagement: "engajamento médio",
-        pipeline: "Pipeline GA4 + Firebase Crashlytics + groundcover APM",
+        title: "Números de produção",
+        subtitle: "Dados reais do app em produção. Não inventei isso num slide.",
+        lives: "beneficiários ativos",
+        flavors: "marcas no mesmo código",
+        retention: "retenção em 28 dias",
+        engagement: "tempo médio por sessão",
+        pipeline: "GA4 + Firebase Crashlytics + groundcover APM",
       },
       business: {
-        title: "Business-Driven Developer",
+        title: "De analista ERP a dev mobile",
         description:
-          "De Analista ERP a Especialista Mobile. Background em SQL Server (T-SQL), Oracle (PL/SQL) e mapeamento de processos aplicado diretamente ao design de software. Dois bacharelados na UFC: Sistemas de Informação + Administração Pública — a combinação que faz a diferença na reunião com o cliente.",
-      },
-      operational: {
-        title: "Operational Excellence",
-        description:
-          "Coordenador de Implantação WMS: entregas para clientes enterprise com gestão de cronograma, alinhamento com stakeholders e treinamento de equipes. Hoje aplico o mesmo rigor na entrega de software.",
+          "Trabalhei com SQL Server e Oracle mapeando processo de indústria antes de escrever Flutter. Quando alguém fala em regra de negócio na reunião, eu já vi isso rodando num ERP — não preciso fingir que entendi.",
+        operationalNote:
+          "Antes disso, coordenei implantação de WMS em cliente enterprise. Aprendi que cronograma e treinamento pesam tanto quanto o código.",
       },
       ownProducts: {
-        title: "Own Products",
-        subtitle: "Developer-Founder",
+        title: "Produtos meus",
+        subtitle: "",
         badge: "Em construção",
         phonemidia: {
           name: "PhoneMidiaEasy",
           description:
-            "Player local para sistemas automotivos Android via Bluetooth. Flutter, UI large-touch, ConnectionMode parametrizável.",
+            "Cliente queria tocar música no sistema Android do carro via Bluetooth, offline. Começou como pedido real, não como ideia de startup.",
         },
         recorre: {
           name: "RecorreFácil",
           description:
-            "SaaS de cobranças recorrentes para administradores informais. React + Node + Asaas + WhatsApp API. Em MVP.",
+            "Cobrança recorrente para administrador de condomínio que ainda faz tudo no caderno. React + Node + Asaas + WhatsApp. Ainda em MVP.",
         },
       },
       dynamicAppIcon: {
         title: "dynamic_app_icon",
         badge: "Open Source",
         description:
-          "Desenvolvimento de solução nativa para alteração programática de ícones em tempo de execução. Criado para viabilizar branding dinâmico em ecossistemas Whitelabel, superando limitações sistêmicas do Android e iOS.",
-        deepDiveLabel: "Profundidade técnica",
-        android: "Android: activity-alias & PackageManager",
-        ios: "iOS: alternateIcons API",
-        bridge: "Bridge: Flutter Method Channels (Kotlin/Swift)",
+          "Precisávamos trocar o ícone do app sem atualizar a Play Store a cada campanha de branding. Esse package resolve isso no Android e no iOS.",
+        deepDiveLabel: "Por baixo dos panos:",
+        android: "Android: activity-alias e PackageManager",
+        ios: "iOS: alternateIcons",
+        bridge: "Flutter Method Channels (Kotlin/Swift)",
         githubLabel: "Ver no GitHub",
         githubAriaLabel:
           "Repositório dynamic_app_icon no GitHub, link externo abre em nova aba",
       },
+      scoreboard: {
+        title: "scoreboard",
+        badge: "Open Source",
+        description:
+          "Placar eletrônico de vôlei para usar no celular — toque para marcar ponto, arraste para desfazer. PWA leve, sem build, funciona offline na quadra.",
+        deepDiveLabel: "Por baixo dos panos:",
+        pwa: "PWA instalável",
+        offline: "Service worker + offline",
+        stack: "HTML, CSS e JS puro",
+        githubLabel: "Ver no GitHub",
+        githubAriaLabel:
+          "Repositório scoreboard no GitHub, link externo abre em nova aba",
+        liveLabel: "Ver em produção",
+        liveAriaLabel:
+          "Placar de Vôlei em produção no Netlify, link externo abre em nova aba",
+      },
     },
     stack: {
-      title: "Tech Stack Híbrida",
+      title: "Ferramentas que uso no dia a dia",
       mobile: {
-        title: "Mobile & Modern",
+        title: "Mobile e front-end",
         items: ["Flutter", "Dart", "React", "Node.js", "TypeScript", "Prisma", "Firebase", "Shorebird OTA"],
       },
       observability: {
-        title: "Observability & Data",
+        title: "Dados e monitoramento",
         items: ["Google Analytics 4", "Firebase Crashlytics", "New Relic", "groundcover APM", "Looker Studio"],
       },
       enterprise: {
-        title: "Enterprise & Legacy",
+        title: "Sistemas legados",
         items: ["SQL Server (T-SQL)", "Oracle (PL/SQL)", "ERP", "WMS"],
       },
     },
     experience: {
       title: "Experiência",
+      current: "Atual",
       fiibo: {
-        role: "Senior Mobile Developer",
+        role: "Desenvolvedor Mobile Sênior",
         company: "Fiibo",
         period: "Atual",
-        badge: "Top 1 Healthtech Open Startups",
-        description: "Startup avaliada em R$77,5M",
+        badge: "",
+        description: "Benefícios corporativos — app whitelabel com dezenas de marcas em produção.",
         bullets: [
-          "Plataforma Flutter whitelabel com 10+ flavors",
-          "Implementação de GA4 pipeline e Firebase Crashlytics",
-          "Adoção de Clean Architecture e TDD",
-          "OTA deployments via Shorebird",
+          "Mesmo código Flutter, marcas diferentes (Fiibo, FIEC, XP, Doctorclin…)",
+          "Montei pipeline de GA4 e Crashlytics para parar de adivinhar bug em produção",
+          "Clean Architecture e TDD onde dá — nem sempre dá, e tudo bem",
+          "Deploy OTA com Shorebird quando a loja não pode esperar",
         ],
       },
       wms: {
-        role: "Dev & Coordenador de Implantação",
+        role: "Dev e coordenador de implantação",
         company: "WMS Expert",
-        period: "2019 - 2021",
+        period: "2019 – 2021",
         description: "",
         bullets: [
-          "Ponte entre operações de negócio e desenvolvimento",
-          "Gestão de implantações em clientes enterprise",
-          "SQL Server e integrações de sistema",
+          "Fazia a ponte entre operação do cliente e o time de dev",
+          "Implantação em fábrica e distribuidor — prazo apertado, usuário impaciente",
+          "SQL Server e integrações que ninguém documentou direito",
         ],
       },
       lux: {
-        role: "Analista de Processos ERP",
+        role: "Analista de processos ERP",
         company: "LUX Sistemas",
-        period: "2017 - 2019",
+        period: "2017 – 2019",
         description: "",
         bullets: [
-          "Levantamento de regras de negócio para indústrias",
-          "Oracle PL/SQL, modelagem de dados",
-          "Documentação técnica",
+          "Levantamento de regra de negócio em indústria — chão de fábrica, não slide",
+          "Oracle PL/SQL e modelagem quando o ERP não fazia o que o cliente jurava que fazia",
+          "Documentação técnica para quem vinha depois (incluindo eu mesmo)",
         ],
       },
     },
     education: {
       title: "Formação",
+      inProgress: "Em andamento",
       si: {
         degree: "Bacharelado em Sistemas de Informação",
         institution: "Estácio",
@@ -143,11 +171,11 @@ const translations = {
         degree: "Especialização em Engenharia de Software",
         institution: "Em andamento",
       },
-      footnote: "A combinação rara que garante fluência técnica e estratégica simultaneamente.",
+      footnote: "",
     },
     contact: {
-      title: "Entre em contato",
-      subtitle: "Aberto a conversas sobre oportunidades, colaborações ou só trocar ideia sobre tecnologia.",
+      title: "Fala comigo",
+      subtitle: "Me manda um e-mail. Respondo em português, sem texto de vendas.",
       form: {
         name: "Nome",
         email: "E-mail",
@@ -175,122 +203,150 @@ const translations = {
       extras: "Extras",
     },
     hero: {
-      badge: "Available for Projects",
-      title: "Engineering Scalable Apps with a Business Mindset",
+      availability:
+        "Open to freelance and remote full-time — I prefer real problems over polished pitches.",
+      title: "A mobile dev who came from the factory floor",
       subtitle:
-        "Senior Flutter Developer with ERP and Public Administration background. Technical rigor with strategic product vision.",
-      cta: "View projects",
+        "I spent years deploying ERP and WMS systems before writing code for a living. That changed how I work: I ask why the business rule exists before opening the editor.",
+      cta: "See what I'm building",
+    },
+    voice: {
+      title: "What I think about mobile in 2026",
+      body:
+        "I don't like side projects that die in Figma. PhoneMidiaEasy started because a client needed offline media in their car — not because I wanted an app on the store. At Fiibo, I learned whitelabel isn't just swapping colors: it's not breaking ten brands when you fix a bug in the eleventh. And yes, I still think Flutter makes sense for serious products — but only if you measure what happens after deploy, not just whether the build passed.",
     },
     projects: {
-      title: "Real Impact",
+      title: "What I'm building",
       whitelabel: {
-        title: "The Whitelabel Architect",
+        title: "One app, ten brands",
         description:
-          "Technical leadership at Fiibo — startup valued at R$77.5M, Top 1 Healthtech in 100 Open Startups. Flutter whitelabel architecture with 10+ active brands (Fiibo, FIEC, XP, Doctorclin and others). Clean Architecture, TDD, Shorebird OTA.",
+          "At Fiibo, the same Flutter codebase runs as Fiibo, FIEC, XP, Doctorclin, and others. The hard part isn't a pretty screen — it's shipping a new brand without breaking the rest. Shorebird helps when the store queue is too slow.",
+        storeLinksLabel: "View on Play Store",
+        fiiboLabel: "Fiibo",
+        fiecLabel: "RH Benefícios FIEC",
+        fiiboAriaLabel:
+          "Fiibo app on Google Play Store, external link opens in a new tab",
+        fiecAriaLabel:
+          "RH Benefícios FIEC app on Google Play Store, external link opens in a new tab",
       },
       metrics: {
-        title: "Real Product Metrics",
-        subtitle: "Real data from a production product — not a side project.",
-        lives: "lives covered",
-        flavors: "flavors in production",
-        retention: "retention rate (28d)",
-        engagement: "avg engagement",
-        pipeline: "GA4 + Firebase Crashlytics + groundcover APM Pipeline",
+        title: "Production numbers",
+        subtitle: "Real data from a live app. I didn't make this up for a slide deck.",
+        lives: "active beneficiaries",
+        flavors: "brands on one codebase",
+        retention: "28-day retention",
+        engagement: "avg. session time",
+        pipeline: "GA4 + Firebase Crashlytics + groundcover APM",
       },
       business: {
-        title: "Business-Driven Developer",
+        title: "From ERP analyst to mobile dev",
         description:
-          "From ERP Analyst to Mobile Specialist. Background in SQL Server (T-SQL), Oracle (PL/SQL) and process mapping applied directly to software design. Two degrees from UFC: Information Systems + Public Administration — the combination that makes the difference in client meetings.",
-      },
-      operational: {
-        title: "Operational Excellence",
-        description:
-          "WMS Implementation Coordinator: enterprise client deliveries with schedule management, stakeholder alignment and team training. Today I apply the same rigor in software delivery.",
+          "I worked with SQL Server and Oracle mapping factory processes before writing Flutter. When someone talks business rules in a meeting, I've usually seen them running in an ERP — I don't have to pretend I get it.",
+        operationalNote:
+          "Before that, I coordinated WMS rollouts for enterprise clients. I learned schedules and training matter as much as code.",
       },
       ownProducts: {
-        title: "Own Products",
-        subtitle: "Developer-Founder",
+        title: "My own products",
+        subtitle: "",
         badge: "In progress",
         phonemidia: {
           name: "PhoneMidiaEasy",
           description:
-            "Local player for Android automotive systems via Bluetooth. Flutter, large-touch UI, configurable ConnectionMode.",
+            "A client needed offline Bluetooth media on their car's Android head unit. It started as a real request, not a startup idea.",
         },
         recorre: {
           name: "RecorreFácil",
           description:
-            "Recurring billing SaaS for informal administrators. React + Node + Asaas + WhatsApp API. In MVP.",
+            "Recurring billing for a building manager who still ran everything on paper. React + Node + Asaas + WhatsApp. Still MVP.",
         },
       },
       dynamicAppIcon: {
         title: "dynamic_app_icon",
         badge: "Open Source",
         description:
-          "Native solution for programmatic app icon changes at runtime. Built to enable dynamic branding in Whitelabel ecosystems, working around platform constraints on Android and iOS.",
-        deepDiveLabel: "Technical deep dive",
+          "We needed to swap the app icon without a Play Store update for every branding campaign. This package does that on Android and iOS.",
+        deepDiveLabel: "Under the hood:",
         android: "Android: activity-alias & PackageManager",
-        ios: "iOS: alternateIcons API",
-        bridge: "Bridge: Flutter Method Channels (Kotlin/Swift)",
+        ios: "iOS: alternateIcons",
+        bridge: "Flutter Method Channels (Kotlin/Swift)",
         githubLabel: "View on GitHub",
         githubAriaLabel:
           "dynamic_app_icon repository on GitHub, external link opens in a new tab",
       },
+      scoreboard: {
+        title: "scoreboard",
+        badge: "Open Source",
+        description:
+          "Volleyball scoreboard for your phone — tap to score, swipe down to undo. Lightweight PWA, no build step, works offline on the court.",
+        deepDiveLabel: "Under the hood:",
+        pwa: "Installable PWA",
+        offline: "Service worker + offline",
+        stack: "Vanilla HTML, CSS & JS",
+        githubLabel: "View on GitHub",
+        githubAriaLabel:
+          "scoreboard repository on GitHub, external link opens in a new tab",
+        liveLabel: "View live",
+        liveAriaLabel:
+          "Volleyball Scoreboard live on Netlify, external link opens in a new tab",
+      },
     },
     stack: {
-      title: "Hybrid Tech Stack",
+      title: "Tools I use day to day",
       mobile: {
-        title: "Mobile & Modern",
+        title: "Mobile & front-end",
         items: ["Flutter", "Dart", "React", "Node.js", "TypeScript", "Prisma", "Firebase", "Shorebird OTA"],
       },
       observability: {
-        title: "Observability & Data",
+        title: "Data & monitoring",
         items: ["Google Analytics 4", "Firebase Crashlytics", "New Relic", "groundcover APM", "Looker Studio"],
       },
       enterprise: {
-        title: "Enterprise & Legacy",
+        title: "Legacy systems",
         items: ["SQL Server (T-SQL)", "Oracle (PL/SQL)", "ERP", "WMS"],
       },
     },
     experience: {
       title: "Experience",
+      current: "Current",
       fiibo: {
         role: "Senior Mobile Developer",
         company: "Fiibo",
         period: "Current",
-        badge: "Top 1 Healthtech Open Startups",
-        description: "Startup valued at R$77.5M",
+        badge: "",
+        description: "Corporate benefits — whitelabel app with dozens of brands in production.",
         bullets: [
-          "Flutter whitelabel platform with 10+ flavors",
-          "GA4 pipeline and Firebase Crashlytics implementation",
-          "Clean Architecture and TDD adoption",
-          "OTA deployments via Shorebird",
+          "Same Flutter codebase, different brands (Fiibo, FIEC, XP, Doctorclin…)",
+          "Built GA4 and Crashlytics pipeline to stop guessing production bugs",
+          "Clean Architecture and TDD where it fits — not always, and that's fine",
+          "OTA deploys with Shorebird when the store can't wait",
         ],
       },
       wms: {
-        role: "Dev & Implementation Coordinator",
+        role: "Dev & implementation lead",
         company: "WMS Expert",
-        period: "2019 - 2021",
+        period: "2019 – 2021",
         description: "",
         bullets: [
-          "Bridge between business operations and development",
-          "Enterprise client implementation management",
-          "SQL Server and system integrations",
+          "Bridge between client operations and the dev team",
+          "Rollouts at factories and distributors — tight deadlines, impatient users",
+          "SQL Server and integrations nobody documented properly",
         ],
       },
       lux: {
-        role: "ERP Process Analyst",
+        role: "ERP process analyst",
         company: "LUX Sistemas",
-        period: "2017 - 2019",
+        period: "2017 – 2019",
         description: "",
         bullets: [
-          "Business rules gathering for industries",
-          "Oracle PL/SQL, data modeling",
-          "Technical documentation",
+          "Business rules on the factory floor, not in slides",
+          "Oracle PL/SQL and modeling when the ERP didn't do what sales promised",
+          "Technical docs for whoever came next (including future me)",
         ],
       },
     },
     education: {
       title: "Education",
+      inProgress: "In progress",
       si: {
         degree: "Bachelor in Information Systems",
         institution: "Estácio",
@@ -303,11 +359,11 @@ const translations = {
         degree: "Software Engineering Specialization",
         institution: "In progress",
       },
-      footnote: "The rare combination that ensures technical and strategic fluency simultaneously.",
+      footnote: "",
     },
     contact: {
       title: "Get in touch",
-      subtitle: "Open to conversations about opportunities, collaborations, or just talking about technology.",
+      subtitle: "Send me an email. I'll reply in plain language, no sales copy.",
       form: {
         name: "Name",
         email: "Email",

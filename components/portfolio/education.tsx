@@ -50,7 +50,7 @@ export function Education() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`group rounded-2xl border bg-card p-6 transition-all duration-300 hover:shadow-[0_0_30px_-5px_rgba(0,229,192,0.1)] ${
+                className={`group rounded-2xl border bg-card p-6 transition-all duration-300 hover:shadow-[0_4px_24px_-4px_rgba(196,87,42,0.1)] ${
                   isHighlight
                     ? "border-primary/50 hover:border-primary"
                     : "border-border hover:border-primary/30"
@@ -62,7 +62,7 @@ export function Education() {
                   </div>
                   {isHighlight && (
                     <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
-                      Em andamento
+                      {t.education.inProgress}
                     </span>
                   )}
                 </div>
@@ -78,15 +78,17 @@ export function Education() {
           })}
         </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-8 text-center text-sm italic text-muted-foreground"
-        >
-          {t.education.footnote}
-        </motion.p>
+        {t.education.footnote ? (
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-8 text-center text-sm italic text-muted-foreground"
+          >
+            {t.education.footnote}
+          </motion.p>
+        ) : null}
       </div>
     </section>
   );

@@ -54,8 +54,8 @@ function BadgeTooltip({ label, color }: { label: string; color: string }) {
               bottom: "calc(100% + 8px)",
               left: "50%",
               width: 200,
-              background: "#161622",
-              border: "0.5px solid rgba(6,182,212,0.2)",
+              background: "#292524",
+              border: "0.5px solid rgba(196,87,42,0.2)",
               borderRadius: 10,
               padding: "10px 12px",
               zIndex: 50,
@@ -66,7 +66,7 @@ function BadgeTooltip({ label, color }: { label: string; color: string }) {
               letterSpacing: 0,
             }}
           >
-            <p style={{ color: "#06B6D4", fontSize: 11, fontWeight: 600, marginBottom: 4 }}>
+            <p style={{ color: "#C4572A", fontSize: 11, fontWeight: 600, marginBottom: 4 }}>
               {label}
             </p>
             <p className="text-muted-foreground" style={{ fontSize: 11, lineHeight: 1.6 }}>
@@ -79,9 +79,9 @@ function BadgeTooltip({ label, color }: { label: string; color: string }) {
                 left: "50%",
                 width: 8,
                 height: 8,
-                background: "#161622",
-                borderRight: "0.5px solid rgba(6,182,212,0.2)",
-                borderBottom: "0.5px solid rgba(6,182,212,0.2)",
+                background: "#292524",
+                borderRight: "0.5px solid rgba(196,87,42,0.2)",
+                borderBottom: "0.5px solid rgba(196,87,42,0.2)",
                 transform: "translateX(-50%) rotate(45deg)",
               }}
             />
@@ -95,7 +95,7 @@ function BadgeTooltip({ label, color }: { label: string; color: string }) {
 const stackColors: Record<string, string> = {
   Flutter: "bg-sky-500/20 text-sky-400 border-sky-500/30",
   Dart: "bg-blue-500/20 text-blue-400 border-blue-500/30",
-  React: "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
+  React: "bg-primary/20 text-primary border-primary/30",
   "Node.js": "bg-green-500/20 text-green-400 border-green-500/30",
   TypeScript: "bg-blue-600/20 text-blue-400 border-blue-600/30",
   Prisma: "bg-slate-500/20 text-slate-300 border-slate-500/30",

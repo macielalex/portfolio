@@ -194,7 +194,8 @@ h1, h2, h3 {
   z-index: 100;
   height: var(--header-height);
   background: transparent;
-  transition: background var(--transition), box-shadow var(--transition);
+  box-shadow: none;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 
 .header.scrolled {
@@ -394,13 +395,21 @@ h1, h2, h3 {
 .hero-animate {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.hero-animate.revealed {
+.hero-animate.visible {
   opacity: 1;
   transform: translateY(0);
 }
+
+.hero__content > .hero-animate:nth-child(1) { transition-delay: 0s; }
+.hero__content > .hero-animate:nth-child(2) { transition-delay: 0.1s; }
+.hero__content > .hero-animate:nth-child(3) { transition-delay: 0.2s; }
+.hero__content > .hero-animate:nth-child(4) { transition-delay: 0.3s; }
+.hero__content > .hero-animate:nth-child(5) { transition-delay: 0.4s; }
+.hero__visual .hero-animate { transition-delay: 0.5s; }
 
 /* ============================================================
    BANNER CTA
@@ -468,17 +477,24 @@ h1, h2, h3 {
   text-align: center;
 }
 
-/* Reveal on scroll */
+/* Reveal on scroll — spring bounce (estilo Framer Motion) */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.reveal.revealed {
+.reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Delay escalonado para grupos de elementos */
+.reveal:nth-child(1) { transition-delay: 0s; }
+.reveal:nth-child(2) { transition-delay: 0.1s; }
+.reveal:nth-child(3) { transition-delay: 0.2s; }
+.reveal:nth-child(4) { transition-delay: 0.3s; }
 
 /* ============================================================
    SOBRE MIM
@@ -562,6 +578,20 @@ h1, h2, h3 {
   background: var(--bg-dark);
   overflow: hidden;
   padding: 1.25rem 0;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
 }
 
 .marquee__track {
@@ -609,6 +639,7 @@ h1, h2, h3 {
   display: grid;
   gap: 2rem;
   grid-template-columns: 1fr;
+  perspective: 1000px;
 }
 
 .project-card {
@@ -616,12 +647,26 @@ h1, h2, h3 {
   overflow: hidden;
   background: var(--bg-white);
   box-shadow: var(--shadow);
-  transition: transform var(--transition), box-shadow var(--transition);
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow var(--transition);
+  will-change: transform;
 }
 
-.project-card:hover {
-  transform: scale(1.02);
+.project-card.is-tilting {
+  transition: transform 0.1s ease-out, box-shadow var(--transition);
+}
+
+.project-card:hover,
+.project-card.is-tilting {
   box-shadow: var(--shadow-hover);
+}
+
+@media (hover: none) {
+  .project-card:active {
+    transform: perspective(1000px) scale(1.02);
+  }
 }
 
 .project-card__image {

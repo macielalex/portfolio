@@ -9,7 +9,7 @@ interface UseCounterOptions {
 }
 
 export function useCounter({ end, duration = 2000, delay = 0 }: UseCounterOptions) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(end);
   const [hasStarted, setHasStarted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -34,14 +34,17 @@ export function useCounter({ end, duration = 2000, delay = 0 }: UseCounterOption
     if (!hasStarted) return;
 
     const timeout = setTimeout(() => {
+      const startValue = Math.round(end * 0.92);
       const startTime = Date.now();
       const endTime = startTime + duration;
+
+      setCount(startValue);
 
       const animate = () => {
         const now = Date.now();
         const progress = Math.min((now - startTime) / duration, 1);
         const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-        setCount(Math.floor(easeOutQuart * end));
+        setCount(Math.round(startValue + easeOutQuart * (end - startValue)));
 
         if (now < endTime) {
           requestAnimationFrame(animate);
