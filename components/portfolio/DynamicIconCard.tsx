@@ -55,8 +55,8 @@ export function DynamicIconCard({ delay = 0, className, labels }: DynamicIconCar
       transition={{ duration: 0.5, delay }}
       className={cn(
         "group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300",
-        "hover:border-[#00e5c0]/45 hover:shadow-[0_0_36px_-6px_rgba(0,229,192,0.28)]",
-        "focus-within:border-[#00e5c0]/45 focus-within:shadow-[0_0_36px_-6px_rgba(0,229,192,0.22)]",
+        "hover:border-primary/40 hover:shadow-[0_4px_24px_-4px_rgba(196,87,42,0.15)]",
+        "focus-within:border-primary/40 focus-within:shadow-[0_4px_24px_-4px_rgba(196,87,42,0.1)]",
         className
       )}
     >
@@ -95,9 +95,7 @@ export function DynamicIconCard({ delay = 0, className, labels }: DynamicIconCar
         </header>
 
         <div>
-          <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground/80">
-            {copy.deepDiveLabel}
-          </p>
+          <p className="mb-2 text-sm text-muted-foreground">{copy.deepDiveLabel}</p>
           <ul
             className="flex flex-wrap gap-2"
             aria-label={copy.deepDiveLabel}
@@ -140,8 +138,8 @@ export function DynamicIconCard({ delay = 0, className, labels }: DynamicIconCar
             aria-label={copy.githubAriaLabel}
             className={cn(
               "inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-secondary/30 px-4 py-2.5 text-sm font-medium text-foreground transition-colors",
-              "hover:border-[#00e5c0]/35 hover:bg-secondary/50 hover:text-primary",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00e5c0]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+              "hover:border-primary/35 hover:bg-secondary/50 hover:text-primary",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
               "sm:w-auto sm:justify-start"
             )}
           >

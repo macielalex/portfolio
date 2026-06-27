@@ -17,8 +17,8 @@ export function Hero() {
       {/* Animated gradient background */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute top-0 left-1/2 h-[800px] w-[1200px] -translate-x-1/2 -translate-y-1/2">
-          <div className="absolute inset-0 animate-pulse rounded-full bg-gradient-to-br from-primary/20 via-primary/10 to-slate-900/50 blur-[120px]" />
-          <div className="absolute inset-0 animate-pulse rounded-full bg-gradient-to-tr from-cyan-500/10 via-transparent to-slate-800/30 blur-[100px]" style={{ animationDelay: "1s" }} />
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/15 via-primary/5 to-transparent blur-[120px]" />
+          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent/10 via-transparent to-transparent blur-[100px]" style={{ animationDelay: "1s" }} />
         </div>
       </div>
 
@@ -41,25 +41,18 @@ export function Hero() {
                 priority
               />
             </div>
-            <div className="absolute -bottom-1 -right-1 h-5 w-5 rounded-full border-2 border-background bg-green-500" />
           </div>
         </motion.div>
 
-        {/* Badge */}
-        <motion.div
+        {/* Disponibilidade — texto simples, sem badge piscando */}
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2"
+          className="mb-6 text-sm text-muted-foreground md:text-base"
         >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-          </span>
-          <span className="text-sm font-medium text-primary">
-            {t.hero.badge}
-          </span>
-        </motion.div>
+          {t.hero.availability}
+        </motion.p>
 
         {/* Title */}
         <motion.h1
@@ -111,7 +104,7 @@ export function Hero() {
         >
           <button
             onClick={scrollToProjects}
-            className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-[0_0_30px_-5px_rgba(0,229,192,0.5)]"
+            className="group inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 font-medium text-primary-foreground transition-all hover:bg-primary/90"
           >
             {t.hero.cta}
             <ChevronDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />

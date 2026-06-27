@@ -9,13 +9,13 @@ import { motion, AnimatePresence } from "framer-motion";
 const Logo = () => (
   <div className="flex items-center gap-3">
     <svg width="40" height="40" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="64" height="64" rx="14" fill="#0d1117"/>
-      <path d="M13 50 L32 14 L51 50" stroke="#06B6D4" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <line x1="20" y1="37" x2="44" y2="37" stroke="#06B6D4" strokeWidth="2.5" strokeLinecap="round"/>
+      <rect width="64" height="64" rx="14" fill="#1c1917"/>
+      <path d="M13 50 L32 14 L51 50" stroke="#C4572A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <line x1="20" y1="37" x2="44" y2="37" stroke="#C4572A" strokeWidth="2.5" strokeLinecap="round"/>
     </svg>
     <span className="font-mono text-sm font-semibold tracking-tight">
       <span className="text-white">Alex</span>
-      <span style={{ color: "#06B6D4" }}>Maciel</span>
+      <span className="text-primary">Maciel</span>
     </span>
   </div>
 );

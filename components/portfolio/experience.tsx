@@ -69,15 +69,11 @@ export function Experience() {
                 <div className="absolute left-0 top-0 md:left-1/2 md:-translate-x-1/2">
                   <div className="relative">
                     {exp.current && (
-                      <div className="absolute inset-0 animate-ping rounded-full bg-primary opacity-50" />
+                      <div className="relative h-4 w-4 rounded-full border-2 border-primary bg-primary" />
                     )}
-                    <div
-                      className={`relative h-4 w-4 rounded-full border-2 ${
-                        exp.current
-                          ? "border-primary bg-primary"
-                          : "border-muted-foreground/50 bg-background"
-                      }`}
-                    />
+                    {!exp.current && (
+                      <div className="relative h-4 w-4 rounded-full border-2 border-muted-foreground/50 bg-background" />
+                    )}
                   </div>
                 </div>
 
@@ -88,7 +84,7 @@ export function Experience() {
                   }`}
                 >
                   <div
-                    className={`inline-block rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-[0_0_30px_-5px_rgba(0,229,192,0.1)] ${
+                    className={`inline-block rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-[0_4px_24px_-4px_rgba(196,87,42,0.1)] ${
                       index % 2 === 0 ? "md:mr-8" : "md:ml-8"
                     }`}
                   >
@@ -98,7 +94,7 @@ export function Experience() {
                       </h3>
                       {exp.current && (
                         <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
-                          Current
+                      {t.experience.current}
                         </span>
                       )}
                     </div>

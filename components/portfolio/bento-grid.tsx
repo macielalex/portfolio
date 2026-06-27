@@ -3,21 +3,24 @@
 import { useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import { DynamicIconCard } from "@/components/portfolio/DynamicIconCard";
+import { ScoreboardCard } from "@/components/portfolio/ScoreboardCard";
 import { useCounter } from "@/hooks/use-counter";
 import { cn } from "@/lib/utils";
-import { Briefcase, Shield, Rocket, Smartphone, BarChart3 } from "lucide-react";
+import { Briefcase, ExternalLink, Rocket, Smartphone, BarChart3 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // ── Tooltip icons ────────────────────────────────────────────────────────────
 
+const ACCENT = "#C4572A";
+
 function LivesIcon() {
   return (
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-      <circle cx="16" cy="9"  r="3"   fill="#06B6D4" />
-      <circle cx="9"  cy="15" r="2.5" fill="#06B6D4" opacity="0.7" />
-      <circle cx="23" cy="15" r="2.5" fill="#06B6D4" opacity="0.7" />
-      <circle cx="5"  cy="22" r="2"   fill="#06B6D4" opacity="0.45" />
-      <circle cx="27" cy="22" r="2"   fill="#06B6D4" opacity="0.45" />
+      <circle cx="16" cy="9"  r="3"   fill={ACCENT} />
+      <circle cx="9"  cy="15" r="2.5" fill={ACCENT} opacity="0.7" />
+      <circle cx="23" cy="15" r="2.5" fill={ACCENT} opacity="0.7" />
+      <circle cx="5"  cy="22" r="2"   fill={ACCENT} opacity="0.45" />
+      <circle cx="27" cy="22" r="2"   fill={ACCENT} opacity="0.45" />
     </svg>
   );
 }
@@ -27,10 +30,10 @@ function RetentionIcon() {
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
       <polyline
         points="4,26 10,21 16,17 22,11 28,6"
-        stroke="#06B6D4" strokeWidth="2"
+        stroke={ACCENT} strokeWidth="2"
         strokeLinecap="round" strokeLinejoin="round"
       />
-      <circle cx="28" cy="6" r="2.5" fill="#06B6D4" />
+      <circle cx="28" cy="6" r="2.5" fill={ACCENT} />
     </svg>
   );
 }
@@ -38,9 +41,9 @@ function RetentionIcon() {
 function ClockIcon() {
   return (
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-      <circle cx="16" cy="16" r="11" stroke="#06B6D4" strokeWidth="2" />
-      <line x1="16" y1="16" x2="16" y2="9"  stroke="#06B6D4" strokeWidth="2" strokeLinecap="round" />
-      <line x1="16" y1="16" x2="21" y2="16" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="16" cy="16" r="11" stroke={ACCENT} strokeWidth="2" />
+      <line x1="16" y1="16" x2="16" y2="9"  stroke={ACCENT} strokeWidth="2" strokeLinecap="round" />
+      <line x1="16" y1="16" x2="21" y2="16" stroke={ACCENT} strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }
@@ -48,8 +51,8 @@ function ClockIcon() {
 function FlavorsIcon() {
   return (
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-      <rect x="3"  y="8" width="11" height="16" rx="3" stroke="#06B6D4" strokeWidth="2" />
-      <rect x="18" y="8" width="11" height="16" rx="3" stroke="#06B6D4" strokeWidth="2" />
+      <rect x="3"  y="8" width="11" height="16" rx="3" stroke={ACCENT} strokeWidth="2" />
+      <rect x="18" y="8" width="11" height="16" rx="3" stroke={ACCENT} strokeWidth="2" />
     </svg>
   );
 }
@@ -85,8 +88,8 @@ function StatCard({ children, tooltip }: { children: React.ReactNode; tooltip: T
               bottom: "calc(100% + 10px)",
               left: "50%",
               width: 220,
-              background: "#161622",
-              border: "0.5px solid rgba(6,182,212,0.2)",
+              background: "#292524",
+              border: "0.5px solid rgba(196,87,42,0.25)",
               borderRadius: 10,
               padding: 12,
               zIndex: 50,
@@ -97,7 +100,7 @@ function StatCard({ children, tooltip }: { children: React.ReactNode; tooltip: T
             <div style={{ display: "flex", justifyContent: "center", marginBottom: 8 }}>
               {tooltip.icon}
             </div>
-            <p style={{ color: "#06B6D4", fontSize: 12, fontWeight: 600, marginBottom: 4 }}>
+            <p style={{ color: ACCENT, fontSize: 12, fontWeight: 600, marginBottom: 4 }}>
               {tooltip.title}
             </p>
             <p className="text-muted-foreground" style={{ fontSize: 11, lineHeight: 1.6 }}>
@@ -111,9 +114,9 @@ function StatCard({ children, tooltip }: { children: React.ReactNode; tooltip: T
                 left: "50%",
                 width: 8,
                 height: 8,
-                background: "#161622",
-                borderRight: "0.5px solid rgba(6,182,212,0.2)",
-                borderBottom: "0.5px solid rgba(6,182,212,0.2)",
+                background: "#292524",
+                borderRight: "0.5px solid rgba(196,87,42,0.2)",
+                borderBottom: "0.5px solid rgba(196,87,42,0.2)",
                 transform: "translateX(-50%) rotate(45deg)",
               }}
             />
@@ -123,6 +126,14 @@ function StatCard({ children, tooltip }: { children: React.ReactNode; tooltip: T
     </motion.div>
   );
 }
+
+const FIIBO_PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=br.com.inter_brasil_app&hl=pt_BR";
+const FIEC_PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=br.com.fiec&hl=pt_BR";
+
+const linkButtonClass =
+  "inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-secondary/30 px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-primary/35 hover:bg-secondary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 const codeSnippet = `// Flavor Dependency Injection
 abstract class FlavorConfig {
@@ -139,12 +150,12 @@ abstract class FlavorConfig {
   ThemeData get theme;
 }
 
-class FiiboConfig implements FlavorConfig {
+class CompanyAConfig implements FlavorConfig {
   @override
-  String get appName => 'Fiibo';
+  String get appName => 'CompanyA';
   
   @override
-  String get apiBaseUrl => 'https://api.fiibo.com';
+  String get apiBaseUrl => 'https://api.companya.com';
 }`;
 
 function BentoCard({
@@ -164,7 +175,7 @@ function BentoCard({
       transition={{ duration: 0.5, delay }}
       className={cn(
         "group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300",
-        "hover:border-primary/30 hover:shadow-[0_0_30px_-5px_rgba(0,229,192,0.15)]",
+        "hover:border-primary/30 hover:shadow-[0_4px_24px_-4px_rgba(196,87,42,0.12)]",
         className
       )}
     >
@@ -183,7 +194,7 @@ function MetricCounter({ value, suffix = "", label, delay = 0 }: { value: number
 
   return (
     <div ref={ref} className="text-center">
-      <span className="bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-2xl font-bold text-transparent tabular-nums md:text-3xl">
+      <span className="text-2xl font-bold text-primary tabular-nums md:text-3xl">
         {formatCompact(count)}{suffix}
       </span>
       <p className="mt-1 text-xs text-muted-foreground">{label}</p>
@@ -222,6 +233,34 @@ export function BentoGrid() {
               {t.projects.whitelabel.description}
             </p>
 
+            <div className="mb-4">
+              <p className="mb-2 text-xs font-medium text-muted-foreground">
+                {t.projects.whitelabel.storeLinksLabel}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <a
+                  href={FIIBO_PLAY_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={t.projects.whitelabel.fiiboAriaLabel}
+                  className={linkButtonClass}
+                >
+                  <ExternalLink className="size-4 shrink-0" aria-hidden />
+                  <span>{t.projects.whitelabel.fiiboLabel}</span>
+                </a>
+                <a
+                  href={FIEC_PLAY_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={t.projects.whitelabel.fiecAriaLabel}
+                  className={linkButtonClass}
+                >
+                  <ExternalLink className="size-4 shrink-0" aria-hidden />
+                  <span>{t.projects.whitelabel.fiecLabel}</span>
+                </a>
+              </div>
+            </div>
+
             {/* Code Block */}
             <div className="overflow-hidden rounded-lg border border-border bg-[#0d0d0d]">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
@@ -244,7 +283,7 @@ export function BentoGrid() {
                           line.includes("//") && "text-green-500/80",
                           line.includes("class") && "text-purple-400",
                           line.includes("abstract") && "text-purple-400",
-                          line.includes("String") && "text-cyan-400",
+                          line.includes("String") && "text-accent",
                           line.includes("get") && "text-yellow-400",
                           line.includes("@override") && "text-orange-400"
                         )}
@@ -308,7 +347,7 @@ export function BentoGrid() {
                 }}
               >
                 <div className="text-center">
-                  <span className="bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-2xl font-bold text-transparent md:text-3xl">
+                  <span className="text-2xl font-bold text-primary md:text-3xl">
                     13:24
                   </span>
                   <p className="mt-1 text-xs text-muted-foreground">{t.projects.metrics.engagement}</p>
@@ -327,8 +366,8 @@ export function BentoGrid() {
             </p>
           </BentoCard>
 
-          {/* Card 3 - Business-Driven Developer */}
-          <BentoCard delay={0.3}>
+          {/* Card 3 - Trajetória */}
+          <BentoCard className="md:col-span-2" delay={0.3}>
             <div className="mb-4 flex items-center gap-2">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
                 <Briefcase className="h-4 w-4 text-primary" />
@@ -338,44 +377,29 @@ export function BentoGrid() {
               </h3>
             </div>
 
-            <p className="text-sm leading-relaxed text-muted-foreground">
+            <p className="mb-3 text-sm leading-relaxed text-muted-foreground">
               {t.projects.business.description}
             </p>
-          </BentoCard>
-
-          {/* Card 4 - Operational Excellence */}
-          <BentoCard delay={0.4}>
-            <div className="mb-4 flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
-                <Shield className="h-4 w-4 text-primary" />
-              </div>
-              <h3 className="font-semibold text-foreground">
-                {t.projects.operational.title}
-              </h3>
-            </div>
-
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              {t.projects.operational.description}
+            <p className="text-sm leading-relaxed text-muted-foreground/80">
+              {t.projects.business.operationalNote}
             </p>
           </BentoCard>
 
           {/* Open Source — dynamic_app_icon */}
           <DynamicIconCard className="md:col-span-3" delay={0.45} />
 
-          {/* Card 5 - Own Products (wide) */}
+          {/* Open Source — scoreboard */}
+          <ScoreboardCard className="md:col-span-3" delay={0.5} />
+
+          {/* Produtos próprios */}
           <BentoCard className="md:col-span-3" delay={0.55}>
-            <div className="mb-4 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
-                  <Rocket className="h-4 w-4 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground">
-                    {t.projects.ownProducts.title}
-                  </h3>
-                  <span className="text-xs text-muted-foreground">{t.projects.ownProducts.subtitle}</span>
-                </div>
+            <div className="mb-4 flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
+                <Rocket className="h-4 w-4 text-primary" />
               </div>
+              <h3 className="font-semibold text-foreground">
+                {t.projects.ownProducts.title}
+              </h3>
             </div>
 
             <div className="grid gap-4 md:grid-cols-2">
