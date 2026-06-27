@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
-import { Smartphone, BarChart3, Database } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const stackTooltips: Record<string, string> = {
@@ -26,16 +25,52 @@ const stackTooltips: Record<string, string> = {
   WMS:                    "Warehouse Management System — gestão de armazéns e logística.",
 };
 
-function BadgeTooltip({ label, color }: { label: string; color: string }) {
+const HIGHLIGHT_ITEMS = new Set(["Flutter", "Dart"]);
+
+const stackColors: Record<string, string> = {
+  Flutter: "bg-sky-500/20 text-sky-400 border-sky-500/30",
+  Dart: "bg-blue-500/20 text-blue-400 border-blue-500/30",
+  React: "bg-primary/20 text-primary border-primary/30",
+  "Node.js": "bg-green-500/20 text-green-400 border-green-500/30",
+  TypeScript: "bg-blue-600/20 text-blue-400 border-blue-600/30",
+  Prisma: "bg-slate-500/20 text-slate-300 border-slate-500/30",
+  Firebase: "bg-amber-500/20 text-amber-400 border-amber-500/30",
+  "Shorebird OTA": "bg-teal-500/20 text-teal-400 border-teal-500/30",
+  "Google Analytics 4": "bg-orange-500/20 text-orange-400 border-orange-500/30",
+  "Firebase Crashlytics": "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
+  "New Relic": "bg-emerald-600/20 text-emerald-400 border-emerald-600/30",
+  "groundcover APM": "bg-purple-500/20 text-purple-400 border-purple-500/30",
+  "Looker Studio": "bg-indigo-500/20 text-indigo-400 border-indigo-500/30",
+  "SQL Server (T-SQL)": "bg-red-500/20 text-red-400 border-red-500/30",
+  "Oracle (PL/SQL)": "bg-rose-500/20 text-rose-400 border-rose-500/30",
+  ERP: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
+  WMS: "bg-lime-500/20 text-lime-400 border-lime-500/30",
+};
+
+function BadgeTooltip({
+  label,
+  color,
+  size = "default",
+  highlight = false,
+}: {
+  label: string;
+  color: string;
+  size?: "featured" | "compact" | "default";
+  highlight?: boolean;
+}) {
   const [hovered, setHovered] = useState(false);
   const tip = stackTooltips[label];
 
   return (
     <motion.span
       className={cn(
-        "relative cursor-default rounded-full border px-3 py-1.5 font-mono text-xs font-medium transition-all",
-        "hover:scale-105",
-        color
+        "relative cursor-default border font-mono font-medium transition-all hover:scale-105",
+        size === "featured" && "rounded-lg px-4 py-2 text-sm",
+        size === "compact" && "rounded-full px-2 py-1 text-[11px]",
+        size === "default" && "rounded-full px-3 py-1.5 text-xs",
+        highlight
+          ? "border-primary/30 bg-primary/10 text-primary"
+          : color || "border-border bg-muted text-muted-foreground"
       )}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
@@ -92,61 +127,27 @@ function BadgeTooltip({ label, color }: { label: string; color: string }) {
   );
 }
 
-const stackColors: Record<string, string> = {
-  Flutter: "bg-sky-500/20 text-sky-400 border-sky-500/30",
-  Dart: "bg-blue-500/20 text-blue-400 border-blue-500/30",
-  React: "bg-primary/20 text-primary border-primary/30",
-  "Node.js": "bg-green-500/20 text-green-400 border-green-500/30",
-  TypeScript: "bg-blue-600/20 text-blue-400 border-blue-600/30",
-  Prisma: "bg-slate-500/20 text-slate-300 border-slate-500/30",
-  Firebase: "bg-amber-500/20 text-amber-400 border-amber-500/30",
-  "Shorebird OTA": "bg-teal-500/20 text-teal-400 border-teal-500/30",
-  "Google Analytics 4": "bg-orange-500/20 text-orange-400 border-orange-500/30",
-  "Firebase Crashlytics": "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
-  "New Relic": "bg-emerald-600/20 text-emerald-400 border-emerald-600/30",
-  "groundcover APM": "bg-purple-500/20 text-purple-400 border-purple-500/30",
-  "Looker Studio": "bg-indigo-500/20 text-indigo-400 border-indigo-500/30",
-  "SQL Server (T-SQL)": "bg-red-500/20 text-red-400 border-red-500/30",
-  "Oracle (PL/SQL)": "bg-rose-500/20 text-rose-400 border-rose-500/30",
-  ERP: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
-  WMS: "bg-lime-500/20 text-lime-400 border-lime-500/30",
-};
-
-function StackColumn({
-  title,
+function BadgeList({
   items,
-  icon: Icon,
-  delay,
+  size,
+  featuredHighlights = false,
 }: {
-  title: string;
   items: string[];
-  icon: React.ElementType;
-  delay: number;
+  size: "featured" | "compact";
+  featuredHighlights?: boolean;
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay }}
-      className="overflow-visible rounded-2xl border border-border bg-card p-6"
-    >
-      <div className="mb-4 flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
-          <Icon className="h-5 w-5 text-primary" />
-        </div>
-        <h3 className="font-semibold text-foreground">{title}</h3>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        {items.map((item) => (
-          <BadgeTooltip
-            key={item}
-            label={item}
-            color={stackColors[item] || "bg-muted text-muted-foreground border-border"}
-          />
-        ))}
-      </div>
-    </motion.div>
+    <div className={cn("flex flex-wrap", size === "featured" ? "gap-2.5" : "gap-1.5")}>
+      {items.map((item) => (
+        <BadgeTooltip
+          key={item}
+          label={item}
+          size={size}
+          highlight={featuredHighlights && HIGHLIGHT_ITEMS.has(item)}
+          color={stackColors[item] || "bg-muted text-muted-foreground border-border"}
+        />
+      ))}
+    </div>
   );
 }
 
@@ -168,25 +169,51 @@ export function TechStack() {
           {t.stack.title}
         </motion.h2>
 
-        <div className="grid gap-4 md:grid-cols-3">
-          <StackColumn
-            title={t.stack.mobile.title}
-            items={t.stack.mobile.items}
-            icon={Smartphone}
-            delay={0.1}
-          />
-          <StackColumn
-            title={t.stack.observability.title}
-            items={t.stack.observability.items}
-            icon={BarChart3}
-            delay={0.2}
-          />
-          <StackColumn
-            title={t.stack.enterprise.title}
-            items={t.stack.enterprise.items}
-            icon={Database}
-            delay={0.3}
-          />
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-2">
+          {/* Mobile — featured, spans 2 cols × 2 rows */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="overflow-visible rounded-2xl border border-primary/20 bg-card p-8 md:col-span-2 md:row-span-2 md:p-10"
+          >
+            <h3 className="text-2xl font-bold tracking-tight text-foreground">
+              {t.stack.mobile.title}
+            </h3>
+            <p className="mb-6 mt-1 text-sm text-muted-foreground">
+              {t.stack.mobile.subtitle}
+            </p>
+            <BadgeList items={t.stack.mobile.items} size="featured" featuredHighlights />
+          </motion.div>
+
+          {/* Observabilidade — compact */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="overflow-visible rounded-xl border border-border bg-card/50 p-5"
+          >
+            <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+              {t.stack.observability.title}
+            </h3>
+            <BadgeList items={t.stack.observability.items} size="compact" />
+          </motion.div>
+
+          {/* Legado — compact, muted */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="overflow-visible rounded-xl border border-border/60 bg-secondary/20 p-5"
+          >
+            <h3 className="mb-3 text-sm font-semibold text-muted-foreground">
+              {t.stack.enterprise.title}
+            </h3>
+            <BadgeList items={t.stack.enterprise.items} size="compact" />
+          </motion.div>
         </div>
       </div>
     </section>
