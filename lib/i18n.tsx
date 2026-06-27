@@ -106,6 +106,7 @@ const translations = {
       title: "Ferramentas que uso no dia a dia",
       mobile: {
         title: "Mobile e front-end",
+        subtitle: "Onde passo a maior parte do tempo",
         items: ["Flutter", "Dart", "React", "Node.js", "TypeScript", "Prisma", "Firebase", "Shorebird OTA"],
       },
       observability: {
@@ -294,6 +295,7 @@ const translations = {
       title: "Tools I use day to day",
       mobile: {
         title: "Mobile & front-end",
+        subtitle: "Where I spend most of my time",
         items: ["Flutter", "Dart", "React", "Node.js", "TypeScript", "Prisma", "Firebase", "Shorebird OTA"],
       },
       observability: {
