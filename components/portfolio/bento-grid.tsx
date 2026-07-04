@@ -417,21 +417,6 @@ export function BentoGrid() {
                   {t.projects.ownProducts.phonemidia.description}
                 </p>
               </div>
-
-              {/* RecorreFácil */}
-              <div className="rounded-xl border border-border bg-secondary/30 p-4">
-                <div className="mb-2 flex items-center justify-between">
-                  <h4 className="font-mono text-sm font-semibold text-foreground">
-                    {t.projects.ownProducts.recorre.name}
-                  </h4>
-                  <span className="rounded-full border border-primary/30 bg-primary/10 px-2 py-0.5 text-xs text-primary">
-                    {t.projects.ownProducts.badge}
-                  </span>
-                </div>
-                <p className="text-xs leading-relaxed text-muted-foreground">
-                  {t.projects.ownProducts.recorre.description}
-                </p>
-              </div>
             </div>
           </BentoCard>
         </div>

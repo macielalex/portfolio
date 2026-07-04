@@ -17,15 +17,15 @@ const translations = {
     hero: {
       availability:
         "Aberto para freelas e CLT remoto — prefiro projeto com problema real a pitch bonito.",
-      title: "Dev mobile que veio do chão de fábrica",
+      title: "Dev full stack que veio do chão de fábrica",
       subtitle:
-        "Passei anos implantando ERP e WMS antes de virar dev. Isso me fez programar diferente: eu pergunto o porquê da regra de negócio antes de abrir o editor.",
+        "Passei anos implantando ERP e WMS antes de virar dev. Isso me fez programar diferente: eu pergunto o porquê da regra de negócio antes de abrir o editor — hoje aplico isso do banco de dados à interface.",
       cta: "Ver o que ando fazendo",
     },
     voice: {
-      title: "O que eu penso sobre mobile em 2026",
+      title: "O que eu penso sobre desenvolvimento em 2026",
       body:
-        "Não gosto de side project que morre no Figma. O PhoneMidiaEasy surgiu porque um cliente precisava tocar mídia no carro sem internet — não porque eu queria ter um app na loja. Na Fiibo, aprendi que whitelabel não é só trocar cor: é não quebrar dez marcas quando você corrige um bug na undécima. E sim, ainda acho que Flutter faz sentido para produto sério — mas só se você mede o que acontece depois do deploy, não só se o build passou.",
+        "Não gosto de side project que morre no Figma. O PhoneMidiaEasy surgiu porque um cliente precisava tocar mídia no carro sem internet — não porque eu queria ter um app na loja. Na Fiibo, aprendi que whitelabel não é só trocar cor: é não quebrar dez marcas quando você corrige um bug na undécima. E sim, ainda acho que Flutter faz sentido para produto sério — mas só se você mede o que acontece depois do deploy, não só se o build passou. O mesmo vale para a API que sustenta o app: métrica de produção importa mais do que a camada que você mostra no pitch.",
     },
     projects: {
       title: "O que ando construindo",
@@ -66,11 +66,6 @@ const translations = {
           description:
             "Cliente queria tocar música no sistema Android do carro via Bluetooth, offline. Começou como pedido real, não como ideia de startup.",
         },
-        recorre: {
-          name: "RecorreFácil",
-          description:
-            "Cobrança recorrente para administrador de condomínio que ainda faz tudo no caderno. React + Node + Asaas + WhatsApp. Ainda em MVP.",
-        },
       },
       dynamicAppIcon: {
         title: "dynamic_app_icon",
@@ -107,7 +102,12 @@ const translations = {
       mobile: {
         title: "Mobile e front-end",
         subtitle: "Onde passo a maior parte do tempo",
-        items: ["Flutter", "Dart", "React", "Node.js", "TypeScript", "Prisma", "Firebase", "Shorebird OTA"],
+        items: ["Flutter", "Dart", "React", "Shorebird OTA"],
+      },
+      backend: {
+        title: "Backend e APIs",
+        subtitle: "O que sustenta o produto",
+        items: ["Node.js", "TypeScript", "Prisma", "Firebase"],
       },
       observability: {
         title: "Dados e monitoramento",
@@ -122,7 +122,7 @@ const translations = {
       title: "Experiência",
       current: "Atual",
       fiibo: {
-        role: "Desenvolvedor Mobile Sênior",
+        role: "Desenvolvedor Full Stack Sênior",
         company: "Fiibo",
         period: "Atual",
         badge: "",
@@ -206,15 +206,15 @@ const translations = {
     hero: {
       availability:
         "Open to freelance and remote full-time — I prefer real problems over polished pitches.",
-      title: "A mobile dev who came from the factory floor",
+      title: "A full stack dev who came from the factory floor",
       subtitle:
-        "I spent years deploying ERP and WMS systems before writing code for a living. That changed how I work: I ask why the business rule exists before opening the editor.",
+        "I spent years deploying ERP and WMS systems before writing code for a living. That changed how I work: I ask why the business rule exists before opening the editor — today I apply that from the database to the UI.",
       cta: "See what I'm building",
     },
     voice: {
-      title: "What I think about mobile in 2026",
+      title: "What I think about development in 2026",
       body:
-        "I don't like side projects that die in Figma. PhoneMidiaEasy started because a client needed offline media in their car — not because I wanted an app on the store. At Fiibo, I learned whitelabel isn't just swapping colors: it's not breaking ten brands when you fix a bug in the eleventh. And yes, I still think Flutter makes sense for serious products — but only if you measure what happens after deploy, not just whether the build passed.",
+        "I don't like side projects that die in Figma. PhoneMidiaEasy started because a client needed offline media in their car — not because I wanted an app on the store. At Fiibo, I learned whitelabel isn't just swapping colors: it's not breaking ten brands when you fix a bug in the eleventh. And yes, I still think Flutter makes sense for serious products — but only if you measure what happens after deploy, not just whether the build passed. The same goes for the API behind the app: production metrics matter more than the layer you show in the pitch.",
     },
     projects: {
       title: "What I'm building",
@@ -255,11 +255,6 @@ const translations = {
           description:
             "A client needed offline Bluetooth media on their car's Android head unit. It started as a real request, not a startup idea.",
         },
-        recorre: {
-          name: "RecorreFácil",
-          description:
-            "Recurring billing for a building manager who still ran everything on paper. React + Node + Asaas + WhatsApp. Still MVP.",
-        },
       },
       dynamicAppIcon: {
         title: "dynamic_app_icon",
@@ -296,7 +291,12 @@ const translations = {
       mobile: {
         title: "Mobile & front-end",
         subtitle: "Where I spend most of my time",
-        items: ["Flutter", "Dart", "React", "Node.js", "TypeScript", "Prisma", "Firebase", "Shorebird OTA"],
+        items: ["Flutter", "Dart", "React", "Shorebird OTA"],
+      },
+      backend: {
+        title: "Backend & APIs",
+        subtitle: "What keeps the product running",
+        items: ["Node.js", "TypeScript", "Prisma", "Firebase"],
       },
       observability: {
         title: "Data & monitoring",
@@ -311,7 +311,7 @@ const translations = {
       title: "Experience",
       current: "Current",
       fiibo: {
-        role: "Senior Mobile Developer",
+        role: "Senior Full Stack Developer",
         company: "Fiibo",
         period: "Current",
         badge: "",

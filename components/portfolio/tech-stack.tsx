@@ -169,14 +169,14 @@ export function TechStack() {
           {t.stack.title}
         </motion.h2>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-2">
-          {/* Mobile — featured, spans 2 cols × 2 rows */}
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-3">
+          {/* Mobile — featured, spans 2 cols × 3 rows */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="overflow-visible rounded-2xl border border-primary/20 bg-card p-8 md:col-span-2 md:row-span-2 md:p-10"
+            className="overflow-visible rounded-2xl border border-primary/20 bg-card p-8 md:col-span-2 md:row-span-3 md:p-10"
           >
             <h3 className="text-2xl font-bold tracking-tight text-foreground">
               {t.stack.mobile.title}
@@ -185,6 +185,23 @@ export function TechStack() {
               {t.stack.mobile.subtitle}
             </p>
             <BadgeList items={t.stack.mobile.items} size="featured" featuredHighlights />
+          </motion.div>
+
+          {/* Backend — compact */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="overflow-visible rounded-xl border border-border bg-card/50 p-5"
+          >
+            <h3 className="mb-1 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+              {t.stack.backend.title}
+            </h3>
+            <p className="mb-3 text-xs text-muted-foreground/80">
+              {t.stack.backend.subtitle}
+            </p>
+            <BadgeList items={t.stack.backend.items} size="compact" />
           </motion.div>
 
           {/* Observabilidade — compact */}
