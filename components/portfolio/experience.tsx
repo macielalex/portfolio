@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 export function Experience() {
   const { t } = useI18n();
 
+  // CONFIRMAR: Alex atua em backend/API na Fiibo? Se sim, trocar primeiro bullet por:
+  // "Mesmo código Flutter no front e mesma base de APIs no backend, servindo marcas diferentes (Fiibo, FIEC, XP, Doctorclin…)"
   const experiences = [
     {
       role: t.experience.fiibo.role,

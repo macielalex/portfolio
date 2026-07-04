@@ -62,7 +62,7 @@ export default function RootLayout({
               '@type': 'Person',
               name: 'Alex Maciel',
               url: siteConfig.url,
-              jobTitle: 'Senior Mobile Engineer',
+              jobTitle: 'Senior Full Stack Engineer',
               sameAs: [siteConfig.social.github, siteConfig.social.linkedin],
             }),
           }}

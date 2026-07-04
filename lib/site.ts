@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Alex Maciel Portfolio",
-  title: "Alex Maciel | Senior Mobile Engineer",
+  title: "Alex Maciel | Senior Full Stack Engineer",
   description:
     "Dev mobile Flutter — whitelabel, ERP no passado, produto em produção com dezenas de marcas.",
   locale: "pt_BR",
