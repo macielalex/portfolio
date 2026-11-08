@@ -48,14 +48,16 @@ const translations = {
         flavors: "marcas no mesmo código",
         retention: "retenção em 28 dias",
         engagement: "tempo médio por sessão",
+        tests: "testes automatizados no app",
+        years: "anos em TI, do ERP ao código",
         pipeline: "GA4 + Firebase Crashlytics + groundcover APM",
       },
       business: {
-        title: "De analista ERP a dev mobile",
+        title: "Do ERP ao full stack",
         description:
           "Trabalhei com SQL Server e Oracle mapeando processo de indústria antes de escrever Flutter. Quando alguém fala em regra de negócio na reunião, eu já vi isso rodando num ERP — não preciso fingir que entendi.",
         operationalNote:
-          "Antes disso, coordenei implantação de WMS em cliente enterprise. Aprendi que cronograma e treinamento pesam tanto quanto o código.",
+          "Antes disso, implantei WMS em operações logísticas, da configuração ao go-live. Aprendi que cronograma e treinamento pesam tanto quanto o código.",
       },
       ownProducts: {
         title: "Produtos meus",
@@ -80,6 +82,41 @@ const translations = {
         githubAriaLabel:
           "Repositório dynamic_app_icon no GitHub, link externo abre em nova aba",
       },
+      ai: {
+        title: "IA no trabalho, não no pitch",
+        description:
+          "Na Fiibo, IA virou ferramenta de engenharia: ajuda a sustentar o app em produção e responde perguntas do negócio. Não é demo que só funciona no slide.",
+        rag: {
+          title: "RAG local para sustentação",
+          text: "Ollama com embeddings nomic-embed-text, Qdrant, reranking e Dify, montado para executar ações de sustentação do app.",
+        },
+        agents: {
+          title: "Agentes com Claude Code",
+          text: "9 agentes, 42 skills e hooks orquestrados no Claude Code, mais servidores MCP próprios.",
+        },
+        analytics: {
+          title: "Analytics conversacional",
+          text: "Times de produto e negócio perguntam em linguagem natural e a resposta sai do GA4 e do BigQuery.",
+        },
+        studying: "Em estudo: agentes de IA generativa",
+      },
+      agentsOffice: {
+        title: "escritorio-pessoal",
+        badge: "Projeto pessoal",
+        description:
+          "Seis agentes de IA agendados (cinco ativos) acompanham finanças pessoais: diário, leitor de faturas, semanal, previsão, estratégia e lembretes. Cada agente é dono de um campo do banco compartilhado e só escreve se a versão que leu ainda for a atual.",
+        rulesLabel: "Proibido por regra:",
+        rules: "pagar, transferir, contratar crédito, excluir ou responder e-mail.",
+        deepDiveLabel: "Por baixo dos panos:",
+        openFinance: "Open Finance somente leitura",
+        models: "Modelo escolhido pelo custo do erro",
+        tests: "TypeScript strict + 24 testes Vitest",
+        ci: "GitHub Actions + gitleaks",
+        dataNote: "O repositório usa dados fictícios.",
+        githubLabel: "Ver no GitHub",
+        githubAriaLabel:
+          "Repositório escritorio-pessoal no GitHub, link externo abre em nova aba",
+      },
       scoreboard: {
         title: "scoreboard",
         badge: "Open Source",
@@ -102,12 +139,16 @@ const translations = {
       mobile: {
         title: "Mobile e front-end",
         subtitle: "Onde passo a maior parte do tempo",
-        items: ["Flutter", "Dart", "React", "Shorebird OTA"],
+        items: ["Flutter", "Dart", "React", "React Native", "Kotlin (Android)", "Shorebird OTA"],
       },
       backend: {
         title: "Backend e APIs",
         subtitle: "O que sustenta o produto",
-        items: ["Node.js", "TypeScript", "Prisma", "Firebase"],
+        items: ["Node.js", "TypeScript", "Prisma", "PostgreSQL", "Swagger/OpenAPI", "Microsserviços", "AWS (Cognito, SQS)", "Firebase"],
+      },
+      delivery: {
+        title: "CI/CD e entrega",
+        items: ["Bitbucket Pipelines", "GitHub Actions", "Fastlane", "Docker"],
       },
       observability: {
         title: "Dados e monitoramento",
@@ -124,20 +165,23 @@ const translations = {
       fiibo: {
         role: "Desenvolvedor Full Stack Sênior",
         company: "Fiibo",
-        period: "Atual",
+        period: "fev/2022 – presente",
         badge: "",
-        description: "Benefícios corporativos — app whitelabel com dezenas de marcas em produção.",
+        description: "Benefícios corporativos — app whitelabel com 10+ marcas em produção.",
         bullets: [
           "Mesmo código Flutter, marcas diferentes (Fiibo, FIEC, XP, Doctorclin…)",
           "Montei pipeline de GA4 e Crashlytics para parar de adivinhar bug em produção",
-          "Clean Architecture e TDD onde dá — nem sempre dá, e tudo bem",
-          "Deploy OTA com Shorebird quando a loja não pode esperar",
+          "Arquitetura modular com Provider, migrando para Clean Architecture aos poucos",
+          "APIs em Node.js, TypeScript, Prisma e PostgreSQL, com integrações com Amazon Cognito, HubSpot e AWS SQS, e portais em React",
+          "Configurei os pipelines de build e release (Bitbucket Pipelines, Fastlane) e o deploy OTA com Shorebird, com scripts de pré-release",
+          "Código nativo Android em Kotlin e Remote Config para forçar atualização",
+          "Suíte com mais de 1.100 testes (unitários, de widget e de integração)",
         ],
       },
       wms: {
-        role: "Dev e coordenador de implantação",
+        role: "Product Owner e Desenvolvedor Flutter",
         company: "WMS Expert",
-        period: "2019 – 2021",
+        period: "jul/2016 – jan/2022",
         description: "",
         bullets: [
           "Fazia a ponte entre operação do cliente e o time de dev",
@@ -146,14 +190,25 @@ const translations = {
         ],
       },
       lux: {
-        role: "Analista de processos ERP",
+        role: "Analista de Implantação (ERP)",
         company: "LUX Sistemas",
-        period: "2017 – 2019",
+        period: "abr/2013 – fev/2016",
         description: "",
         bullets: [
           "Levantamento de regra de negócio em indústria — chão de fábrica, não slide",
           "Oracle PL/SQL e modelagem quando o ERP não fazia o que o cliente jurava que fazia",
           "Documentação técnica para quem vinha depois (incluindo eu mesmo)",
+        ],
+      },
+      shalom: {
+        role: "Analista de Suporte ERP",
+        company: "Comunidade Católica Shalom",
+        period: "2009 – 2013",
+        description: "",
+        bullets: [
+          "Onde tudo começou: suporte a sistemas ERP no dia a dia",
+          "Manutenção de banco de dados SQL Server (T-SQL)",
+          "Implantação de novas rotinas no ERP",
         ],
       },
     },
@@ -169,8 +224,12 @@ const translations = {
         institution: "UFC — Universidade Federal do Ceará",
       },
       spec: {
-        degree: "Especialização em Engenharia de Software",
-        institution: "Em andamento",
+        degree: "Pós-graduação em Engenharia de Software",
+        institution: "Centro Universitário União das Américas / Descomplica",
+      },
+      ai: {
+        degree: "Formação em Inteligência Artificial Generativa (96h)",
+        institution: "Geração Tech",
       },
       footnote: "",
     },
@@ -237,14 +296,16 @@ const translations = {
         flavors: "brands on one codebase",
         retention: "28-day retention",
         engagement: "avg. session time",
+        tests: "automated tests in the app",
+        years: "years in IT, from ERP to code",
         pipeline: "GA4 + Firebase Crashlytics + groundcover APM",
       },
       business: {
-        title: "From ERP analyst to mobile dev",
+        title: "From ERP to full stack",
         description:
           "I worked with SQL Server and Oracle mapping factory processes before writing Flutter. When someone talks business rules in a meeting, I've usually seen them running in an ERP — I don't have to pretend I get it.",
         operationalNote:
-          "Before that, I coordinated WMS rollouts for enterprise clients. I learned schedules and training matter as much as code.",
+          "Before that, I rolled out WMS in logistics operations, from setup to go-live. I learned schedules and training matter as much as code.",
       },
       ownProducts: {
         title: "My own products",
@@ -269,6 +330,41 @@ const translations = {
         githubAriaLabel:
           "dynamic_app_icon repository on GitHub, external link opens in a new tab",
       },
+      ai: {
+        title: "AI at work, not in the pitch",
+        description:
+          "At Fiibo, AI became an engineering tool: it helps support the app in production and answers business questions. Not a demo that only works on a slide.",
+        rag: {
+          title: "Local RAG for app support",
+          text: "Ollama with nomic-embed-text embeddings, Qdrant, reranking and Dify, built to run support actions on the app.",
+        },
+        agents: {
+          title: "Agents with Claude Code",
+          text: "9 agents, 42 skills and hooks orchestrated in Claude Code, plus my own MCP servers.",
+        },
+        analytics: {
+          title: "Conversational analytics",
+          text: "Product and business teams ask in plain language and the answer comes from GA4 and BigQuery.",
+        },
+        studying: "Currently studying: generative AI agents",
+      },
+      agentsOffice: {
+        title: "escritorio-pessoal",
+        badge: "Personal project",
+        description:
+          "Six scheduled AI agents (five active) track personal finances: daily, invoice reader, weekly, forecast, strategy and reminders. Each agent owns one field of the shared store and only writes if the version it read is still current.",
+        rulesLabel: "Forbidden by rule:",
+        rules: "paying, transferring, taking credit, deleting or replying to email.",
+        deepDiveLabel: "Under the hood:",
+        openFinance: "Read-only Open Finance",
+        models: "Model picked by the cost of error",
+        tests: "Strict TypeScript + 24 Vitest tests",
+        ci: "GitHub Actions + gitleaks",
+        dataNote: "The repository uses fictional data.",
+        githubLabel: "View on GitHub",
+        githubAriaLabel:
+          "escritorio-pessoal repository on GitHub, external link opens in a new tab",
+      },
       scoreboard: {
         title: "scoreboard",
         badge: "Open Source",
@@ -291,12 +387,16 @@ const translations = {
       mobile: {
         title: "Mobile & front-end",
         subtitle: "Where I spend most of my time",
-        items: ["Flutter", "Dart", "React", "Shorebird OTA"],
+        items: ["Flutter", "Dart", "React", "React Native", "Kotlin (Android)", "Shorebird OTA"],
       },
       backend: {
         title: "Backend & APIs",
         subtitle: "What keeps the product running",
-        items: ["Node.js", "TypeScript", "Prisma", "Firebase"],
+        items: ["Node.js", "TypeScript", "Prisma", "PostgreSQL", "Swagger/OpenAPI", "Microservices", "AWS (Cognito, SQS)", "Firebase"],
+      },
+      delivery: {
+        title: "CI/CD & delivery",
+        items: ["Bitbucket Pipelines", "GitHub Actions", "Fastlane", "Docker"],
       },
       observability: {
         title: "Data & monitoring",
@@ -313,20 +413,23 @@ const translations = {
       fiibo: {
         role: "Senior Full Stack Developer",
         company: "Fiibo",
-        period: "Current",
+        period: "Feb 2022 – present",
         badge: "",
-        description: "Corporate benefits — whitelabel app with dozens of brands in production.",
+        description: "Corporate benefits — whitelabel app with 10+ brands in production.",
         bullets: [
           "Same Flutter codebase, different brands (Fiibo, FIEC, XP, Doctorclin…)",
           "Built GA4 and Crashlytics pipeline to stop guessing production bugs",
-          "Clean Architecture and TDD where it fits — not always, and that's fine",
-          "OTA deploys with Shorebird when the store can't wait",
+          "Modular architecture with Provider, gradually migrating to Clean Architecture",
+          "APIs in Node.js, TypeScript, Prisma and PostgreSQL, integrating Amazon Cognito, HubSpot and AWS SQS, plus React portals",
+          "Set up build and release pipelines (Bitbucket Pipelines, Fastlane) and OTA deploys with Shorebird, with pre-release scripts",
+          "Native Android code in Kotlin and Remote Config to force updates",
+          "Test suite with 1,100+ cases (unit, widget and integration)",
         ],
       },
       wms: {
-        role: "Dev & implementation lead",
+        role: "Product Owner & Flutter Developer",
         company: "WMS Expert",
-        period: "2019 – 2021",
+        period: "Jul 2016 – Jan 2022",
         description: "",
         bullets: [
           "Bridge between client operations and the dev team",
@@ -335,14 +438,25 @@ const translations = {
         ],
       },
       lux: {
-        role: "ERP process analyst",
+        role: "ERP Implementation Analyst",
         company: "LUX Sistemas",
-        period: "2017 – 2019",
+        period: "Apr 2013 – Feb 2016",
         description: "",
         bullets: [
           "Business rules on the factory floor, not in slides",
           "Oracle PL/SQL and modeling when the ERP didn't do what sales promised",
           "Technical docs for whoever came next (including future me)",
+        ],
+      },
+      shalom: {
+        role: "ERP Support Analyst",
+        company: "Comunidade Católica Shalom",
+        period: "2009 – 2013",
+        description: "",
+        bullets: [
+          "Where it all started: day-to-day ERP support",
+          "SQL Server (T-SQL) database maintenance",
+          "Rolling out new routines in the ERP",
         ],
       },
     },
@@ -358,8 +472,12 @@ const translations = {
         institution: "UFC — Federal University of Ceará",
       },
       spec: {
-        degree: "Software Engineering Specialization",
-        institution: "In progress",
+        degree: "Postgraduate degree in Software Engineering",
+        institution: "Centro Universitário União das Américas / Descomplica",
+      },
+      ai: {
+        degree: "Generative AI Program (96h)",
+        institution: "Geração Tech",
       },
       footnote: "",
     },
