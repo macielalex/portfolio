@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import { DynamicIconCard } from "@/components/portfolio/DynamicIconCard";
+import { AgentsOfficeCard } from "@/components/portfolio/AgentsOfficeCard";
 import { ScoreboardCard } from "@/components/portfolio/ScoreboardCard";
 import { useCounter } from "@/hooks/use-counter";
 import { cn } from "@/lib/utils";
-import { Briefcase, ExternalLink, Rocket, Smartphone, BarChart3 } from "lucide-react";
+import { Briefcase, Database, ExternalLink, MessageSquareText, Rocket, Smartphone, Sparkles, BarChart3, Workflow } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // ── Tooltip icons ────────────────────────────────────────────────────────────
@@ -53,6 +54,30 @@ function FlavorsIcon() {
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
       <rect x="3"  y="8" width="11" height="16" rx="3" stroke={ACCENT} strokeWidth="2" />
       <rect x="18" y="8" width="11" height="16" rx="3" stroke={ACCENT} strokeWidth="2" />
+    </svg>
+  );
+}
+
+function TestsIcon() {
+  return (
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <rect x="5" y="5" width="22" height="22" rx="4" stroke={ACCENT} strokeWidth="2" />
+      <polyline
+        points="10,16 14,20 22,12"
+        stroke={ACCENT} strokeWidth="2"
+        strokeLinecap="round" strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function YearsIcon() {
+  return (
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <line x1="4" y1="16" x2="28" y2="16" stroke={ACCENT} strokeWidth="2" strokeLinecap="round" />
+      <circle cx="6"  cy="16" r="2.5" fill={ACCENT} opacity="0.45" />
+      <circle cx="16" cy="16" r="2.5" fill={ACCENT} opacity="0.7" />
+      <circle cx="26" cy="16" r="3"   fill={ACCENT} />
     </svg>
   );
 }
@@ -184,18 +209,19 @@ function BentoCard({
   );
 }
 
-function formatCompact(value: number): string {
-  if (value >= 1000) return `${Math.floor(value / 1000)}k`;
-  return value.toLocaleString();
+function formatCompact(value: number, locale: string): string {
+  if (value >= 10000) return `${Math.floor(value / 1000)}k`;
+  return value.toLocaleString(locale === "pt" ? "pt-BR" : "en-US");
 }
 
 function MetricCounter({ value, suffix = "", label, delay = 0 }: { value: number; suffix?: string; label: string; delay?: number }) {
   const { count, ref } = useCounter({ end: value, duration: 2000, delay });
+  const { locale } = useI18n();
 
   return (
     <div ref={ref} className="text-center">
       <span className="text-2xl font-bold text-primary tabular-nums md:text-3xl">
-        {formatCompact(count)}{suffix}
+        {formatCompact(count, locale)}{suffix}
       </span>
       <p className="mt-1 text-xs text-muted-foreground">{label}</p>
     </div>
@@ -333,7 +359,7 @@ export function BentoGrid() {
                 tooltip={{
                   icon: <RetentionIcon />,
                   title: "O que significa?",
-                  text: "71% dos usuários voltam a usar o app todo mês. Na indústria, qualquer número acima de 40% já é considerado saudável.",
+                  text: "Retenção de 71% em 28 dias, segundo os dados do app em produção.",
                 }}
               >
                 <MetricCounter value={71} suffix="%" label={t.projects.metrics.retention} delay={200} />
@@ -352,6 +378,26 @@ export function BentoGrid() {
                   </span>
                   <p className="mt-1 text-xs text-muted-foreground">{t.projects.metrics.engagement}</p>
                 </div>
+              </StatCard>
+
+              <StatCard
+                tooltip={{
+                  icon: <TestsIcon />,
+                  title: "O que significa?",
+                  text: "A suíte do app tem mais de 1.100 casos de teste, entre unitários, de widget e de integração.",
+                }}
+              >
+                <MetricCounter value={1100} suffix="+" label={t.projects.metrics.tests} delay={300} />
+              </StatCard>
+
+              <StatCard
+                tooltip={{
+                  icon: <YearsIcon />,
+                  title: "O que significa?",
+                  text: "Desde 2009 em TI: suporte e implantação de ERP, implantação de WMS e, hoje, engenharia de software.",
+                }}
+              >
+                <MetricCounter value={17} label={t.projects.metrics.years} delay={400} />
               </StatCard>
             </div>
 
@@ -384,6 +430,44 @@ export function BentoGrid() {
               {t.projects.business.operationalNote}
             </p>
           </BentoCard>
+
+          {/* IA aplicada */}
+          <BentoCard className="md:col-span-3" delay={0.35}>
+            <div className="mb-4 flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
+                <Sparkles className="h-4 w-4 text-primary" />
+              </div>
+              <h3 className="font-semibold text-foreground">
+                {t.projects.ai.title}
+              </h3>
+            </div>
+            <p className="mb-5 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+              {t.projects.ai.description}
+            </p>
+
+            <div className="grid gap-4 md:grid-cols-3">
+              {[
+                { icon: Database, copy: t.projects.ai.rag },
+                { icon: Workflow, copy: t.projects.ai.agents },
+                { icon: MessageSquareText, copy: t.projects.ai.analytics },
+              ].map(({ icon: Icon, copy }) => (
+                <div key={copy.title} className="rounded-xl border border-border bg-secondary/30 p-4">
+                  <div className="mb-2 flex items-center gap-2">
+                    <Icon className="h-4 w-4 shrink-0 text-primary" aria-hidden />
+                    <h4 className="text-sm font-semibold text-foreground">{copy.title}</h4>
+                  </div>
+                  <p className="text-xs leading-relaxed text-muted-foreground">{copy.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-4 font-mono text-xs text-muted-foreground/70">
+              {t.projects.ai.studying}
+            </p>
+          </BentoCard>
+
+          {/* Projeto pessoal — escritorio-pessoal */}
+          <AgentsOfficeCard className="md:col-span-3" delay={0.4} />
 
           {/* Open Source — dynamic_app_icon */}
           <DynamicIconCard className="md:col-span-3" delay={0.45} />
