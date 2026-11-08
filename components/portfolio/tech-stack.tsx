@@ -14,10 +14,21 @@ const stackTooltips: Record<string, string> = {
   Prisma:                 "ORM moderno para Node.js/TypeScript com tipagem automática do banco.",
   Firebase:               "Plataforma do Google para auth, banco em tempo real e storage.",
   "Shorebird OTA":        "Atualização Over-the-Air para Flutter sem passar pela revisão da loja.",
+  "React Native":         "Framework da Meta para apps mobile nativos escritos em React.",
+  "Kotlin (Android)":     "Linguagem oficial do Android, usada nas integrações nativas do app.",
+  PostgreSQL:             "Banco relacional open source, base das APIs com Prisma.",
+  "Swagger/OpenAPI":      "Padrão para documentar APIs REST de forma navegável e testável.",
+  "Microsserviços":       "Serviços independentes que se comunicam de forma síncrona e assíncrona.",
+  Microservices:          "Serviços independentes que se comunicam de forma síncrona e assíncrona.",
+  "AWS (Cognito, SQS)":   "Amazon Cognito para autenticação e AWS SQS para filas de mensagens.",
+  "Bitbucket Pipelines":  "CI/CD integrado ao Bitbucket para build, testes e release.",
+  "GitHub Actions":       "Automação de CI/CD integrada ao GitHub.",
+  Fastlane:               "Automação de build, assinatura e publicação de apps nas lojas.",
+  Docker:                 "Containers para rodar serviços do mesmo jeito em qualquer ambiente.",
   "Google Analytics 4":  "Plataforma de análise comportamental de usuários.",
   "Firebase Crashlytics": "Monitoramento de crashes em tempo real para apps mobile.",
   "New Relic":            "Observabilidade full-stack para monitorar performance e erros em produção.",
-  "groundcover APM":      "Application Performance Monitoring baseado em eBPF para ambientes Kubernetes.",
+  "groundcover APM":      "Application Performance Monitoring para acompanhar performance e erros em produção.",
   "Looker Studio":        "Ferramenta de BI do Google para dashboards e visualização de dados.",
   "SQL Server (T-SQL)":  "SGBD da Microsoft com suporte a procedimentos armazenados em T-SQL.",
   "Oracle (PL/SQL)":     "SGBD corporativo da Oracle com PL/SQL para lógica server-side.",
@@ -36,6 +47,17 @@ const stackColors: Record<string, string> = {
   Prisma: "bg-slate-500/20 text-slate-300 border-slate-500/30",
   Firebase: "bg-amber-500/20 text-amber-400 border-amber-500/30",
   "Shorebird OTA": "bg-teal-500/20 text-teal-400 border-teal-500/30",
+  "React Native": "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
+  "Kotlin (Android)": "bg-violet-500/20 text-violet-400 border-violet-500/30",
+  PostgreSQL: "bg-sky-600/20 text-sky-400 border-sky-600/30",
+  "Swagger/OpenAPI": "bg-lime-600/20 text-lime-400 border-lime-600/30",
+  "Microsserviços": "bg-stone-500/20 text-stone-300 border-stone-500/30",
+  Microservices: "bg-stone-500/20 text-stone-300 border-stone-500/30",
+  "AWS (Cognito, SQS)": "bg-orange-600/20 text-orange-400 border-orange-600/30",
+  "Bitbucket Pipelines": "bg-blue-500/20 text-blue-400 border-blue-500/30",
+  "GitHub Actions": "bg-slate-500/20 text-slate-300 border-slate-500/30",
+  Fastlane: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
+  Docker: "bg-sky-500/20 text-sky-400 border-sky-500/30",
   "Google Analytics 4": "bg-orange-500/20 text-orange-400 border-orange-500/30",
   "Firebase Crashlytics": "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
   "New Relic": "bg-emerald-600/20 text-emerald-400 border-emerald-600/30",
@@ -185,6 +207,14 @@ export function TechStack() {
               {t.stack.mobile.subtitle}
             </p>
             <BadgeList items={t.stack.mobile.items} size="featured" featuredHighlights />
+
+            {/* CI/CD — dentro do card principal: é como o app chega à loja */}
+            <div className="mt-8 border-t border-border pt-6">
+              <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+                {t.stack.delivery.title}
+              </h4>
+              <BadgeList items={t.stack.delivery.items} size="featured" />
+            </div>
           </motion.div>
 
           {/* Backend — compact */}
