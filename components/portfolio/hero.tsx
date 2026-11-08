@@ -5,7 +5,10 @@ import { MapPin, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-export function Hero() {
+import { DeployShowcase } from "@/components/portfolio/deploy-showcase";
+import { cn } from "@/lib/utils";
+
+export function Hero({ showcase = false }: { showcase?: boolean }) {
   const { t } = useI18n();
 
   const scrollToProjects = () => {
@@ -22,106 +25,115 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto max-w-4xl text-center">
-        {/* Profile picture */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8 flex justify-center"
-        >
-          <div className="relative">
-            <div className="h-32 w-32 overflow-hidden rounded-full border-2 border-primary/30 bg-secondary">
-              <Image
-                src="https://avatars.githubusercontent.com/u/65974487"
-                alt="Alex Maciel"
-                width={128}
-                height={128}
-                className="h-full w-full object-cover"
-                priority
-              />
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Disponibilidade — texto simples, sem badge piscando */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-6 text-sm text-muted-foreground md:text-base"
-        >
-          {t.hero.availability}
-        </motion.p>
-
-        {/* Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-4 text-balance text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl"
-        >
-          Alex Maciel
-        </motion.h1>
-
-        {/* Location */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="mb-6 flex items-center justify-center gap-1.5 text-muted-foreground"
-        >
-          <MapPin className="h-4 w-4" />
-          <span className="text-sm">Fortaleza, CE, Brasil</span>
-        </motion.div>
-
-        {/* Subtitle - Technical */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mb-6 font-mono text-lg text-primary md:text-xl"
-        >
-          {t.hero.title}
-        </motion.p>
-
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mx-auto max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg"
-        >
-          {t.hero.subtitle}
-        </motion.p>
-
-        {/* CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-10"
-        >
-          <button
-            onClick={scrollToProjects}
-            className="group inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 font-medium text-primary-foreground transition-all hover:bg-primary/90"
+      <div
+        className={cn(
+          "relative z-10 w-full",
+          showcase && "mx-auto grid max-w-6xl items-center gap-12 py-12 lg:grid-cols-[1.1fr_1fr] lg:gap-8",
+        )}
+      >
+        <div className={cn("relative mx-auto max-w-4xl text-center", showcase && "lg:mx-0 lg:text-left")}>
+          {/* Profile picture */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className={cn("mb-8 flex justify-center", showcase && "lg:justify-start")}
           >
-            {t.hero.cta}
-            <ChevronDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
-          </button>
-        </motion.div>
+            <div className="relative">
+              <div className={cn("h-32 w-32 overflow-hidden rounded-full border-2 border-primary/30 bg-secondary", showcase && "lg:h-20 lg:w-20")}>
+                <Image
+                  src="https://avatars.githubusercontent.com/u/65974487"
+                  alt="Alex Maciel"
+                  width={128}
+                  height={128}
+                  className="h-full w-full object-cover"
+                  priority
+                />
+              </div>
+            </div>
+          </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="mt-16 flex justify-center"
-        >
-          <div className="flex h-10 w-6 items-start justify-center rounded-full border border-border p-1.5">
-            <div className="h-2 w-1 animate-bounce rounded-full bg-primary" />
-          </div>
-        </motion.div>
+          {/* Disponibilidade — texto simples, sem badge piscando */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mb-6 text-sm text-muted-foreground md:text-base"
+          >
+            {t.hero.availability}
+          </motion.p>
+
+          {/* Title */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mb-4 text-balance text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl"
+          >
+            Alex Maciel
+          </motion.h1>
+
+          {/* Location */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className={cn("mb-6 flex items-center justify-center gap-1.5 text-muted-foreground", showcase && "lg:justify-start")}
+          >
+            <MapPin className="h-4 w-4" />
+            <span className="text-sm">Fortaleza, CE, Brasil</span>
+          </motion.div>
+
+          {/* Subtitle - Technical */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mb-6 font-mono text-lg text-primary md:text-xl"
+          >
+            {t.hero.title}
+          </motion.p>
+
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className={cn("mx-auto max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg", showcase && "lg:mx-0")}
+          >
+            {t.hero.subtitle}
+          </motion.p>
+
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="mt-10"
+          >
+            <button
+              onClick={scrollToProjects}
+              className="group inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 font-medium text-primary-foreground transition-all hover:bg-primary/90"
+            >
+              {t.hero.cta}
+              <ChevronDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
+            </button>
+          </motion.div>
+
+          {/* Scroll indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className={cn("mt-16 flex justify-center", showcase && "hidden lg:flex lg:justify-start")}
+          >
+            <div className="flex h-10 w-6 items-start justify-center rounded-full border border-border p-1.5">
+              <div className="h-2 w-1 animate-bounce rounded-full bg-primary" />
+            </div>
+          </motion.div>
+        </div>
+
+        {showcase && <DeployShowcase className="max-w-[420px] lg:max-w-[520px]" />}
       </div>
     </section>
   );

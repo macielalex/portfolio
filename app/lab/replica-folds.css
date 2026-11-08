@@ -1,0 +1,179 @@
+[data-lab="godly"] nav.fixed {
+  background: #141210;
+  border-bottom-color: transparent;
+  backdrop-filter: none;
+}
+
+[data-lab="godly"] [class*="blur-"] {
+  display: none;
+}
+
+[data-lab="godly"] .animate-bounce {
+  display: none;
+}
+
+[data-lab="godly"] .lab-body > section:first-child {
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: auto;
+  padding: 8rem 6vw 4rem;
+}
+
+[data-lab="godly"] .lab-body > section:first-child .mx-auto,
+[data-lab="godly"] .lab-body > section:first-child .text-center {
+  margin-left: 0;
+  margin-right: auto;
+  max-width: 42rem;
+  text-align: left;
+}
+
+[data-lab="godly"] .lab-body > section:first-child .justify-center {
+  justify-content: flex-start;
+}
+
+[data-lab="godly"] .lab-body > section:first-child h1 {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+}
+
+[data-lab="bento"] .lab-body {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0.75rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 5.5rem 1.25rem 6rem;
+}
+
+[data-lab="bento"] .lab-body > section,
+[data-lab="bento"] .lab-body > footer {
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid rgba(231, 224, 216, 0.14);
+  border-radius: 1rem;
+  background: #292524;
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+}
+
+[data-lab="bento"] .lab-body > section:first-child,
+[data-lab="bento"] .lab-body > footer {
+  grid-column: 1 / -1;
+}
+
+[data-lab="bento"] #sobre {
+  grid-column: span 5;
+}
+
+[data-lab="bento"] #projects {
+  grid-column: span 7;
+}
+
+[data-lab="bento"] #stack {
+  grid-column: span 7;
+}
+
+[data-lab="bento"] #experience {
+  grid-column: span 5;
+}
+
+[data-lab="bento"] #education {
+  grid-column: span 5;
+}
+
+[data-lab="bento"] #contact {
+  grid-column: span 7;
+}
+
+[data-lab="lapa"] .lab-body {
+  display: flex;
+  flex-direction: column;
+}
+
+[data-lab="lapa"] .lab-body::before {
+  content: "Aberto a conversas · casos em produção · resposta direta";
+  order: 0;
+  width: fit-content;
+  margin: 5.75rem auto 0;
+  border: 1px solid rgba(196, 87, 42, 0.45);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  color: #e7e0d8;
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+[data-lab="lapa"] .lab-body > section:first-child {
+  order: 1;
+  min-height: 78vh;
+}
+
+[data-lab="lapa"] #projects {
+  order: 2;
+}
+
+[data-lab="lapa"] #experience {
+  order: 3;
+}
+
+[data-lab="lapa"] #contact {
+  order: 4;
+}
+
+[data-lab="lapa"] #sobre {
+  order: 5;
+}
+
+[data-lab="lapa"] #stack {
+  order: 6;
+}
+
+[data-lab="lapa"] #education {
+  order: 7;
+}
+
+[data-lab="lapa"] .lab-body > footer {
+  order: 8;
+}
+
+[data-lab="lapa"] .lab-body > section:first-child button {
+  border-radius: 999px;
+  padding: 0.9rem 1.4rem;
+  font-size: 1rem;
+}
+
+[data-lab="aceternity"] .lab-body > section:first-child h1 {
+  background: linear-gradient(100deg, #f3ece4 10%, #c4572a 55%, #d4a574);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+[data-lab="aceternity"] [class*="from-primary"] {
+  background: radial-gradient(circle, rgba(196, 87, 42, 0.55), transparent 62%);
+}
+
+[data-lab="aceternity"] .rounded-xl,
+[data-lab="aceternity"] .rounded-2xl {
+  box-shadow:
+    0 0 0 1px rgba(196, 87, 42, 0.4),
+    0 0 32px rgba(196, 87, 42, 0.16);
+}
+
+[data-lab="aceternity"] .lab-body > section:first-child img {
+  box-shadow: 0 0 0 2px #c4572a, 0 0 28px rgba(196, 87, 42, 0.55);
+}
+
+@media (max-width: 768px) {
+  [data-lab="bento"] .lab-body {
+    grid-template-columns: 1fr;
+  }
+
+  [data-lab="bento"] .lab-body > section,
+  [data-lab="bento"] .lab-body > footer {
+    grid-column: 1 / -1;
+  }
+}

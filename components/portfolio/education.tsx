@@ -1,7 +1,7 @@
 "use client";
 
 import { useI18n } from "@/lib/i18n";
-import { GraduationCap, Code, Briefcase, BookOpen } from "lucide-react";
+import { GraduationCap, Code, Briefcase, BookOpen, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function Education() {
@@ -12,6 +12,12 @@ export function Education() {
       degree: t.education.spec.degree,
       institution: t.education.spec.institution,
       icon: BookOpen,
+      highlight: true,
+    },
+    {
+      degree: t.education.ai.degree,
+      institution: t.education.ai.institution,
+      icon: Sparkles,
       highlight: true,
     },
     {
@@ -39,7 +45,7 @@ export function Education() {
           {t.education.title}
         </motion.h2>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2">
           {degrees.map((item, index) => {
             const Icon = item.icon;
             const isHighlight = "highlight" in item && item.highlight;
