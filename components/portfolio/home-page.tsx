@@ -16,7 +16,7 @@ export function HomePage() {
     <I18nProvider>
       <main className="relative min-h-screen overflow-hidden bg-background">
         <Navigation />
-        <Hero />
+        <Hero showcase />
         <Voice />
         <BentoGrid />
         <TechStack />

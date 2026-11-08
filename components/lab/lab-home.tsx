@@ -19,6 +19,7 @@ export const labReplicas = [
   { href: "/lab/2", id: "bento", n: "2", name: "Bento" },
   { href: "/lab/3", id: "lapa", n: "3", name: "Lapa" },
   { href: "/lab/4", id: "aceternity", n: "4", name: "Aceternity" },
+  { href: "/lab/5", id: "deploy", n: "5", name: "Deploy" },
 ] as const;
 
 export type LabReplicaId = (typeof labReplicas)[number]["id"];
@@ -57,7 +58,7 @@ export function Replica({ id }: { id: LabReplicaId }) {
       <main data-lab={id} className="relative min-h-screen bg-background">
         <Navigation />
         <div className="lab-body overflow-x-hidden">
-          <Hero />
+          <Hero showcase={id === "deploy"} />
           <Voice />
           <BentoGrid />
           <TechStack />
