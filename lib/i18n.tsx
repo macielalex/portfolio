@@ -19,7 +19,7 @@ const translations = {
         "Aberto para freelas e CLT remoto — prefiro projeto com problema real a pitch bonito.",
       title: "Dev full stack que veio do chão de fábrica",
       subtitle:
-        "Passei anos implantando ERP e WMS antes de virar dev. Isso me fez programar diferente: eu pergunto o porquê da regra de negócio antes de abrir o editor — hoje aplico isso do banco de dados à interface.",
+        "Começo pelo que trava o negócio. Foi o que aprendi em anos dentro da operação de clientes, implantando ERP e WMS, e é assim que hoje construo produto para 80 mil+ pessoas.",
       cta: "Ver o que ando fazendo",
     },
     voice: {
@@ -267,7 +267,7 @@ const translations = {
         "Open to freelance and remote full-time — I prefer real problems over polished pitches.",
       title: "A full stack dev who came from the factory floor",
       subtitle:
-        "I spent years deploying ERP and WMS systems before writing code for a living. That changed how I work: I ask why the business rule exists before opening the editor — today I apply that from the database to the UI.",
+        "I start with what's holding the business back. I learned that from years inside client operations, rolling out ERP and WMS, and it's how I build a product used by 80,000+ people today.",
       cta: "See what I'm building",
     },
     voice: {
