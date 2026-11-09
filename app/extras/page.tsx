@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description: "Lista de projetos embutidos no portfolio, incluindo ferramentas e paginas adicionais.",
     url: "/extras",
     type: "website",
-    images: [{ url: "/logo.svg" }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
   },
 };
 

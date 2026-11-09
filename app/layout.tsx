@@ -28,13 +28,11 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     type: 'website',
     url: '/',
-    images: [{ url: '/logo.svg' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: siteConfig.title,
     description: siteConfig.description,
-    images: ['/logo.svg'],
   },
   icons: {
     icon: [
