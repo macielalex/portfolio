@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description: "Plano estruturado de estudo de ingles com fases, metas, avaliacoes e prompts prontos.",
     url: "/english",
     type: "website",
-    images: [{ url: "/logo.svg" }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
   },
 };
 
